@@ -98,8 +98,18 @@ app.use('/users', usersRoutes);
 app.use('/donation', donationRoutes);
 app.use('/photos', photosRoutes);
 
+//Gallery Model
+const Gallery = require('./models/gallery');
+
 app.use('/', function(req, res){
-    res.render('index',{
-        title:'Home Page'
+    Gallery.find({}, function(err, galleries){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('index', {
+                title: 'მთავარი გვერდი',
+                galleries: galleries
+            });
+        }
     });
 });

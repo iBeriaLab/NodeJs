@@ -9,8 +9,8 @@ block content
                 .card-header სიახლეები
                     if user
                         if user.isAdmin
-                            a.btn.btn-sm.btn-primary.float-right(href='/photos/gallery/add') სიახლის დამატება 
-                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/photos/gallery/categories/add') კატეგორიის დამატება
+                            a.btn.btn-sm.btn-primary.float-right(href='/photos/gallery/add') ალბომის დამატება 
+                            //-a.btn.btn-sm.btn-info.float-right.mr-1(href='/photos/gallery/categories/add') კატეგორიის დამატება
                 .card-body.no-padder
             .row#loop(style="margin-top:20px;")                
                     each gallery, i in galleries

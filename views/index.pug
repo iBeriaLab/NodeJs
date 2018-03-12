@@ -21,6 +21,14 @@ block content
             a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
                 span.carousel-control-next-icon(aria-hidden='true')
                 span.sr-only Next
+    .row.mb-4
+        .col-md-12
+            .slider
+                .owl-carousel#slider
+                    each gallery, i in galleries
+                        .item.gallery-img
+                            a(href="/photos/gallery/" + gallery.id)
+                                img.img-fluid(src='/uploads/gallery/' + gallery.cover, alt=gallery.title)
     .row
         .col-md-4.col-xs-12
             .card 1
@@ -28,3 +36,9 @@ block content
             .card 2
         .col-md-4.col-xs-12
             .card 3
+block scripts
+    script(src='/js/owl.carousel.js')
+    script.
+        $(document).ready(function(){
+            $('#slider').owlCarousel();
+        });
