@@ -37,6 +37,16 @@ block content
                                             option(value="---") აირჩიეთ კატეგორია
                                             each category, i in categories
                                                 option(value=category.name)= category.name
+                            .row
+                                .col-md-6
+                                    
+                                .col-md-6
+                                    .form-group
+                                        label ალბომი:
+                                        select.form-control(name="gallery", id="gallerySelect")
+                                            option(value="---") აირჩიეთ ალბომი
+                                            each g, i in gallery
+                                                option(value=g._id)= g.title
                             .form-group
                                 label შინაარსი:
                                 textarea.jqte.form-control(name="body", onkeypress="return makeGeo(this,event);")

@@ -25,7 +25,7 @@ block content
                                         #res
                                     .post-body.p-2#post-body!= article.body.substr(0, 275)
                                     .card-bottom
-                                        a.btn.btn-primary.post-btn(href="/articles/"+article._id)
+                                        a.btn.btn-primary.post-btn(href="/articles/"+article.slug)
                                             small სრულად
             .row
                 .col-md-12

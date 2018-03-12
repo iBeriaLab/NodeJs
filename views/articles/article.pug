@@ -7,12 +7,12 @@ block content
         .col-md-9
             .card.card-default
                 .card-header
-                    = article.title
+                    = article.title.substr(0, 70)
                     .float-right
                         .mb-0(style='color:#222;font-size:12px;' data-toggle="tooltip" data-placement="top" title=article.date.year + " წელი")
                             = article.date.day + ' ' + article.date.month + ' ' + article.date.clock
                 .card-body
-                    != article.body + ' ' + article._id
+                    != article.body
                 .card-footer
                     strong ავტორი: 
                         small= author
@@ -23,3 +23,24 @@ block content
                                     i.far.fa-edit
                                 a.btn.btn-danger.btn-sm.delete-article(href='#', data-id=article._id)
                                     i.far.fa-trash-alt
+            .row.mt-4
+                if !gallery
+                else
+                    each photo, i in gallery.photos
+                            .col-md-4.gallery-card
+                                .card.card-default.mb-4
+                                    .card-body.no-padder.gallery-img
+                                        //-img(src='/uploads/gallery/'+gallery.title+'/'+photo, alt="")
+                                        a(href='/uploads/gallery/'+gallery.title+'/'+photo, data-toggle='lightbox', data-gallery=gallery.title)
+                                            img.img-fluid(src='/uploads/gallery/'+gallery.title+'/'+photo, alt=gallery.title)
+            .row.mt-4
+                .col-md-12
+                    .card.card-default
+                        .card-body
+                            .fb-comments(data-href='http://emigrantisxma.com/articles/'+article._id, data-numposts='5', data-width="100%")
+block scripts
+    script.
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+        });

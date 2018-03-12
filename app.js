@@ -91,10 +91,12 @@ const articlesRoutes = require('./routes/articles');
 const pagesRoutes = require('./routes/pages');
 const usersRoutes = require('./routes/users');
 const donationRoutes = require('./routes/donation');
+const photosRoutes = require('./routes/galleryandslider');
 app.use('/articles', articlesRoutes);
 app.use('/pages', pagesRoutes);
 app.use('/users', usersRoutes);
 app.use('/donation', donationRoutes);
+app.use('/photos', photosRoutes);
 
 app.use('/', function(req, res){
     res.render('index',{

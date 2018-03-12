@@ -9,22 +9,22 @@ block content
                 .card-header სიახლეები
                     if user
                         if user.isAdmin
-                            a.btn.btn-sm.btn-primary.float-right(href='/gallery/add') სიახლის დამატება 
-                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/gallery/categories/add') კატეგორიის დამატება
+                            a.btn.btn-sm.btn-primary.float-right(href='/photos/gallery/add') სიახლის დამატება 
+                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/photos/gallery/categories/add') კატეგორიის დამატება
                 .card-body.no-padder
             .row#loop(style="margin-top:20px;")                
-                    each article, i in articles
+                    each gallery, i in galleries
                         .col-md-3
                             .card.mb-4.post-card(style='width: 100%;')
                                 .post-img
-                                    small.float-right= article.category
-                                    img.card-img-top(src='/uploads/posts/'+article.poster, alt=article.title)
+                                    small.float-right= gallery.category
+                                    img.card-img-top(src='/uploads/gallery/'+gallery.cover, alt=gallery.title)
                                 .card-body.no-padder
-                                    h5.card-title.p-2.m-0= article.title
+                                    h5.card-title.p-2.m-0= gallery.title
                                         #res
-                                    .post-body.p-2#post-body!= article.body.substr(0, 275)
+                                    .post-body.p-2#post-body!= gallery.description
                                     .card-bottom
-                                        a.btn.btn-primary.post-btn(href="/articles/"+article._id)
+                                        a.btn.btn-primary.post-btn(href="/photos/gallery/"+gallery._id)
                                             small სრულად
             .row
                 .col-md-12

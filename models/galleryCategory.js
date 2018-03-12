@@ -20,4 +20,4 @@ const gallerycategoriesSchema = mongoose.Schema({
     }
 });
 
-const Category = module.exports = mongoose.model('Category', gallerycategoriesSchema);
+const galleryCategory = module.exports = mongoose.model('galleryCategory', gallerycategoriesSchema);

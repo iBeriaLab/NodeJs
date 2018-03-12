@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const path = require('path');
 const multer = require('multer');
+const ars = require('arslugify');
 
 //Uploads Storage
 // var storage = multer.diskStorage({
@@ -34,6 +35,8 @@ const Article = require('../models/articles');
 const Category = require('../models/categories');
 //User Model
 const User = require('../models/user');
+//Gallery Model
+const Gallery = require('../models/gallery');
 
 
 //poster upload
@@ -70,9 +73,16 @@ router.get('/add', ensureAuthenticated, function(req, res, next){
         if(err){
             console.log(err);
         } else{
-            res.render('articles/add_article', {
-                title: 'სიახლის დამატება',
-                categories: categories
+            Gallery.find({}, function(err, gallery){
+                if(err){
+                    console.log(err);
+                } else{
+                    res.render('articles/add_article', {
+                        title: 'სიახლის დამატება',
+                        categories: categories,
+                        gallery:gallery
+                    });
+                }
             });
         }
     });
@@ -122,10 +132,12 @@ router.post('/add', multer(multerConf).single('poster'), function(req, res, next
     }else{
         const article = new Article();
         article.title = req.body.title;
+        article.slug = ars(req.body.title);
         article.category = req.body.category;
         article.poster = req.file.filename;
         article.author = req.user._id;
         article.body = req.body.body;
+        article.gallery = req.body.gallery;
         article.date = {
             year: dateString.getFullYear(),
             month: month[dateString.getMonth()],
@@ -138,7 +150,7 @@ router.post('/add', multer(multerConf).single('poster'), function(req, res, next
             if(err){
                 console.log(err);
             } else{
-                req.flash('success','Article Added');
+                req.flash('success','სტატია წარმატებით დაემატა');
                 res.redirect('/articles');
             }
         });
@@ -146,34 +158,56 @@ router.post('/add', multer(multerConf).single('poster'), function(req, res, next
 });
 
 // Get Single article
-router.get('/:id', function(req, res, next){
-    Article.findById(req.params.id, function(err, article){
-        User.findById(article.author, function(err, user){
-            res.render('articles/article', {
-                article: article,
-                author: user.firstName + ' ' + user.lastName
+router.get('/:slug', function(req, res, next){
+    //let slug =  {"slug" : "article-test-title"}
+    Article.find({"slug" : req.params.slug}, function(err, article){
+        //console.log(article[0].title);
+        User.findById(article[0].author, function(err, user){
+            Gallery.findById(article[0].gallery, function(err, gallery){
+                res.render('articles/article', {
+                    article: article[0],
+                    author: user.firstName + ' ' + user.lastName,
+                    gallery:gallery
+                });
             });
         });
     });
 });
+// // Get Single article
+// router.get('/:id', function(req, res, next){
+//     Article.findById(req.params.id, function(err, article){
+//         User.findById(article.author, function(err, user){
+//             Gallery.findById(article.gallery, function(err, gallery){
+//                 res.render('articles/article', {
+//                     article: article,
+//                     author: user.firstName + ' ' + user.lastName,
+//                     gallery:gallery
+//                 });
+//             });
+//         });
+//     });
+// });
 
 // Load edit form
 router.get('/edit/:id', ensureAuthenticated, function(req, res){
     Article.findById(req.params.id, function(err, article){
-        if(article.author != req.user._id){
+        if(!req.user.isAdmin){
             req.flash('danger','Not Authorized');
             res.redirect('/');
         }
         Category.find({}, function(err, categories){
-            if(err){
-                console.log(err);
-            } else{
-                res.render('articles/edit_article', {
-                    title: 'სიახლის დამატება',
-                    categories: categories,
-                    article: article
-                });
-            }
+            Gallery.find({}, function(err, gallery){
+                if(err){
+                    console.log(err);
+                } else{
+                    res.render('articles/edit_article', {
+                        title: 'სიახლის დამატება',
+                        categories: categories,
+                        article: article,
+                        gallery:gallery
+                    });
+                }
+            });
         });
         // res.render('articles/edit_article', {
         //     title:'Edit Article',
@@ -183,12 +217,15 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 });
 
 // Update articles post request
-router.post('/edit/:id', function(req, res, next){
+router.post('/edit/:id', multer(multerConf).single('poster'), function(req, res, next){
     const article = {};
     article.title = req.body.title;
+    article.slug = ars(req.body.title);
     article.category = req.body.category;
-    article.author = req.body.author;
+    //article.poster = req.file.filename;
+    article.author = req.user._id;
     article.body = req.body.body;
+    article.gallery = req.body.gallery;
 
     const query = {_id:req.params.id};
 
@@ -198,6 +235,7 @@ router.post('/edit/:id', function(req, res, next){
         } else{
             req.flash('success','Article Updated');
             res.redirect('/articles');
+            console.log(req.file);
         }
     });
 });

@@ -7,6 +7,9 @@ const articleSchema = mongoose.Schema({
         type:String,
         required: true
     },
+    slug:{
+        type:String
+    },
     category:{
         type:String,
         required: true
@@ -39,6 +42,10 @@ const articleSchema = mongoose.Schema({
         clock:{
             type: String
         }
+    },
+    gallery:{
+        type:String,
+        require:false
     }
 });
 

@@ -1,0 +1,59 @@
+extends ../layout/layout
+
+block content
+    .row
+        .col-md-12
+            .card.card-default
+                .card-header
+                    = gallery.title
+                    .float-right
+                        .mb-0(style='color:#222;font-size:12px;' data-toggle="tooltip" data-placement="top" title=gallery.date.year + " წელი")
+                            = gallery.date.day + ' ' + gallery.date.month + ' ' + gallery.date.clock
+                            if user
+                                if user.isAdmin
+                                    .btn-group.float-right(role='group')
+                                        a.btn.btn-secondary.btn-sm(href='/photos/gallery/edit/'+gallery._id)
+                                            i.far.fa-edit
+                                        a.btn.btn-danger.btn-sm.delete-gallery(href='#', data-id=gallery._id)
+                                            i.far.fa-trash-alt
+                .card-body
+                    != gallery.description
+    .row.mt-4
+        if user
+            if user.isAdmin
+                .col-md-2
+                    .card.card-default.mb-4
+                        .card-body.no-padder
+                            .imgUpload(data-toggle="modal" data-target="#addPhoto")
+                                i.far.fa-plus-square
+        each photo, i in gallery.photos
+            .col-md-2.gallery-card
+                .card.card-default.mb-4
+                    .card-body.no-padder.gallery-img
+                        //-img(src='/uploads/gallery/'+gallery.title+'/'+photo, alt="")
+                        a(href='/uploads/gallery/'+gallery.title+'/'+photo, data-toggle='lightbox', data-gallery=gallery.title)
+                            img.img-fluid(src='/uploads/gallery/'+gallery.title+'/'+photo, alt=gallery.title)
+    // Modal
+    #addPhoto.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title ფოტოს დამატება
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-body
+                    form(method='POST',  action="/photos/gallery/add/photo/"+gallery.id, enctype="multipart/form-data")
+                            .input-group
+                                .custom-file
+                                    input#inputGroupFile04.custom-file-input(type='file', name="photo")
+                                    label.custom-file-label(for='inputGroupFile04') აირჩიე ფოტო
+                                .input-group-append
+                                    input.btn.btn-primary(type="submit", value="ფოტოს დამატება")
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') გაუქმება
+block scripts
+    script.
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+        });

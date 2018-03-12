@@ -2,9 +2,14 @@ extends ../layout/layout
 block content
     .row
         .col-md-3
-            .card
-                .card-header ნავიგაცია
+            .card.post-card
                 .card-body.no-padder
+                    
+                    .input-group
+                        .post-img
+                            img.card-img-top(src="/uploads/posts/"+article.poster, alt="" id="imgpreview")
+                            .custom-file
+                                input.custom-file-input(type='file' name="poster" id="imgInp", value=article.poster)
                     .list-group
                     a.list-group-item.list-group-item-action(href='#')
                         i.fa.fa-cog
@@ -31,6 +36,16 @@ block content
                                             option(value="---") აირჩიეთ კატეგორია
                                             each category, i in categories
                                                 option(value=category.name)= category.name
+                        .row
+                            .col-md-6
+                                
+                            .col-md-6
+                                .form-group
+                                    label ალბომი:
+                                    select.form-control(name="gallery", id="gallerySelect")
+                                        option(value="---") აირჩიეთ ალბომი
+                                        each g, i in gallery
+                                            option(value=g._id)= g.title
                             .col-md-12
                                 .form-group(style="display:none")
                                     label Author:
