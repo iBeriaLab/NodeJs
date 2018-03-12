@@ -1,0 +1,24 @@
+extends ../layout/layout
+block content
+        .row
+            .col-md-6
+                h3 llllll
+            .col-md-6
+                form(method='POST',  action="/users/login")
+                    .card.card-default
+                        .card-header
+                            h4.mb-0 #{title}
+                        .card-body
+                            .form-group
+                                label ზედმეტსახელი:
+                                input.form-control(name="username", type="text")
+                            .form-group
+                                label პაროლი:
+                                input.form-control(name="password", type="password")
+                        .card-footer
+                            .form-group.mb-0
+                                input.btn.btn-primary(type="submit", value="ავტორიზაცია")
+                                a.btn.fb-btn.ml-1(href="/users/auth/facebook") ავტორიზაცია Facebook-ით
+                    
+        .row
+            .col-md-12

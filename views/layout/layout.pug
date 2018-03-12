@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title ქართული დიასპორა
+        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        //link(rel="stylesheet", href="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css")
+        link(rel="stylesheet", href="/css/app.css")
+        link(rel="stylesheet", href="/css/jquery-te-1.4.0.css")
+        script(defer='', src='https://use.fontawesome.com/releases/v5.0.8/js/all.js')
+        script(src='/js/geo.js')
+        script(src='/bower_components/jquery/dist/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
+    body
+        include ../includes/navbar
+        .container
+            != messages('message', locals)
+            if errors
+                each  error, i in errors
+                    div(class="alert alert-danger") #{error.msg}
+            block content
+            hr
+            footer
+            block scripts
+                p &copy; 2018
+        
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        //script(src='https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js')
+        script(src='/js/jquery-te-1.4.0.js')
+        script(src='/js/main.js')
+        script(src='/js/pagination.js')

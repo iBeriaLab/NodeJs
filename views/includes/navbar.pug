@@ -1,0 +1,47 @@
+nav.navbar.navbar-expand-lg.fixed-top.navbar-laravel
+    .container
+        a.navbar-brand(href='/') 
+            img(src="/img/logo.png", alt="logo" width="135" height="35")
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar', aria-controls='navbar', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+                i.fas.fa-align-justify
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/') მთავარი
+                li.nav-item
+                    a.nav-link(href='/articles') ბლოგი
+                li.nav-item.dropdown
+                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        | ორგანიზაცია
+                    .dropdown-menu(aria-labelledby='navbarDropdown')
+                        a.dropdown-item(href='#') ჩვენ შესახებ
+                        a.dropdown-item(href='#') ღონისძიებები
+                        a.dropdown-item(href='#') პროექტები
+                        .dropdown-divider
+                        a.dropdown-item(href='/donation') შემოწირულობა
+                li.nav-item
+                    a.nav-link(href='#') კონტაქტი
+            ul.nav.navbar-nav
+                if user
+                    if user.isAdmin
+                        li.nav-item
+                            a.nav-link(href='/')
+                                i.far.fa-envelope
+                        li.nav-item
+                            a.nav-link(href='/')
+                                i.far.fa-bell
+                    li.dropdown
+                        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                            = user.firstName + ' ' + user.lastName
+                            span.caret
+                        .dropdown-menu
+                            a.dropdown-item(href='/users/'+user.username) პირადი გვერდი
+                            a.dropdown-item(href='/settings') პარამეტრები
+                            .dropdown-divider
+                            a.dropdown-item(href='/users/logout') გასვლა
+                else
+                    li.nav-item
+                        a.nav-link(href='/users/login') ავტორიზაცია
+                    li.nav-item
+                        a.nav-link(href='/users/register') რეგისტრაცია

@@ -1,0 +1,36 @@
+extends ../layout/sidebared
+
+block content
+    .card.card-default
+        .card-header
+            | გვერდები
+            if user
+                if user.isAdmin
+                    a.btn.btn-sm.btn-success.float-right(href='/pages/add') გვერდის დამატება
+        .card-body.no-padder
+          table.table.table-striped.mb-0
+            thead
+              tr
+                th(scope='col') #
+                th(scope='col') სათაური
+                th(scope='col') შინაარსი
+                th(scope='col')
+            tbody
+              each page, i in pages
+                tr
+                  th(scope='row') 
+                    != i
+                  td
+                    a(href="/pages/" + page.id)
+                      != page.title
+                  td
+                    != page.body.substr(0, 50)
+                  td
+                    if user
+                        if user.isAdmin
+                          .btn-group.float-right(role='group')
+                            a.btn.btn-secondary.btn-sm(href='/pages/edit/'+page._id)
+                                i.far.fa-edit
+                            a.btn.btn-danger.btn-sm.delete-page(href='#', data-id=page._id)
+                                i.far.fa-trash-alt
+        .card-footer

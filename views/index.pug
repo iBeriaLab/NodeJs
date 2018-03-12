@@ -1,0 +1,30 @@
+extends ./layout/layout
+
+block content
+    //- .row.slider-margin
+    .slider.card.mb-4
+        #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+                li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+                li(data-target='#carouselExampleIndicators', data-slide-to='1')
+                li(data-target='#carouselExampleIndicators', data-slide-to='2')
+            .carousel-inner
+                .carousel-item.active
+                    img.d-block.w-100(src='http://www.mladiinfo.eu/wp-content/uploads/bfi_thumb/Tbilisi_Georgia_%E2%80%94_View_of_Tbilisi-34h8pko1dhpx09smfuqdc0.jpg', alt='First slide')
+                .carousel-item
+                    img.d-block.w-100(src='https://www.holiday-factory.com/crazy-deals/img/postcards/georgia.jpg', alt='Second slide')
+                .carousel-item
+                    img.d-block.w-100(src='http://www.masilatravel.com/wp-content/uploads/2016/11/blog-3.jpg', alt='Third slide')
+            a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.sr-only Previous
+            a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.sr-only Next
+    .row
+        .col-md-4.col-xs-12
+            .card 1
+        .col-md-4.col-xs-12
+            .card 2
+        .col-md-4.col-xs-12
+            .card 3

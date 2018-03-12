@@ -1,0 +1,29 @@
+extends ../layout/layout
+block content
+    .card.card-default
+        .card-header #{title}
+        .card-body
+            form(method='POST',  action="/pages/add")
+                .row
+                    .col-md-12
+                        .form-group
+                            label სათაური:
+                            input.form-control(name="title", type="text")
+                .row
+                    .col-md-6
+                        .form-group
+                            label ბმული:
+                            input.form-control(name="slug", type="text")
+                    .col-md-6
+                        .form-group
+                            //- label სტრუქტურა:
+                            //- select.form-control(name="structure")
+                            //-     option(value="sidebared") მარცხენა მენიუ
+                            //-     option(value="layout") სრული გვერდი
+                .row
+                    .col-md-12
+                        .form-group
+                            label შინაარსი:
+                            textarea.form-control(name="body")
+                        input.btn.btn-primary(type="submit", value="დამატება")
+        .card-footer

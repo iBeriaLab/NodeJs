@@ -1,0 +1,44 @@
+extends ../layout/layout
+block content
+    form(method='POST',  action="/articles/add", enctype="multipart/form-data")
+        .row
+            .col-md-3
+                .card.post-card
+                    .card-body.no-padder
+                        
+                        .input-group
+                            .post-img
+                                img.card-img-top(src="/uploads/posts/default.jpg", alt="" id="imgpreview")
+                                .custom-file
+                                    input.custom-file-input(type='file' name="poster" id="imgInp")
+                        .list-group
+                        a.list-group-item.list-group-item-action(href='#')
+                            i.fa.fa-cog
+                            |  Navigation Item
+                        a.list-group-item.list-group-item-action(href='#')
+                            i.fa.fa-cog
+                            |  Navigation Item 2
+            .col-md-9
+                .card.card-default
+                    .card-header.flag-switch #{title}
+                        input.float-right(type='checkbox', id='geoKeys')
+                        label.float-right(for='switch' data-toggle='tooltip', data-placement='top', title='ქართული კლავიატურის ჩასართავად დააკლიკე ღილაკს "~"') Toggle
+                    .card-body
+                        form(method='POST',  action="/articles/add")
+                            .row
+                                .col-md-6
+                                    .form-group
+                                        label სათაური:
+                                        input.form-control(name="title", type="text", onkeypress="return makeGeo(this,event);" placeholder="სტატიის სათაური")
+                                .col-md-6
+                                    .form-group
+                                        label კატეგორია:
+                                        select.form-control(name="category", id="categorySelect")
+                                            option(value="---") აირჩიეთ კატეგორია
+                                            each category, i in categories
+                                                option(value=category.name)= category.name
+                            .form-group
+                                label შინაარსი:
+                                textarea.jqte.form-control(name="body", onkeypress="return makeGeo(this,event);")
+                            input.btn.btn-primary(type="submit", value="სტატიის დამატება")
+                    .card-footer

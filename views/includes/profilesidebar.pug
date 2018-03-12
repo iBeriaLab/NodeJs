@@ -1,0 +1,22 @@
+.card
+  .card-header= user.firstName + ' ' + user.lastName
+  .card-body.no-padder
+    img(src=user.avatar, alt=user.firstName + ' ' + user.lastName)
+    .list-group
+      a.list-group-item.list-group-item-action.fb-color(href=user.facebookURL, target="_blank")
+        i.fab.fa-facebook-f
+        |  ფეისბუქის პროფილი
+      a.list-group-item.list-group-item-action(href='#')
+        i.fa.fa-cog
+        |  Navigation Item 2
+    if user.isAdmin
+      .list-group
+        .list-group-item.bg-primary.text-white
+          i.fas.fa-tachometer-alt
+          strong  ადმინის ხელსაწყოები
+        a.list-group-item.list-group-item-action(href="/users")
+          i.fas.fa-users
+          |   მომხმარებლები
+        a.list-group-item.list-group-item-action(href='/pages')
+          i.fas.fa-file-alt
+          |   გვერდები

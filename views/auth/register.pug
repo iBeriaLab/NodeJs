@@ -1,0 +1,33 @@
+extends ../layout/layout
+block content
+    .card.card-default
+        .card-header
+            h4.mb-0 #{title}
+        .card-body
+            form(method='POST',  action="/users/register")
+                .row
+                    .col-md-6
+                        .form-group
+                            label სახელი:
+                            input.form-control(name="firstName", type="text")
+                        .form-group
+                            label გვარი:
+                            input.form-control(name="lastName", type="text")
+                        .form-group
+                            label ელ.ფოსტა:
+                            input.form-control(name="email", type="email")
+                    .col-md-6
+                        .form-group
+                            label ზედმეტსახელი:
+                            input.form-control(name="username", type="text")
+                        .form-group
+                            label პაროლი:
+                            input.form-control(name="password", type="password")
+                        .form-group
+                            label პაროლის დადასტურება:
+                            input.form-control(name="password2", type="password")
+                .row
+                    .col-md-12
+                        .form-group
+                            input.btn.btn-primary(type="submit", value="რეგისტრაცია")
+        .card-footer

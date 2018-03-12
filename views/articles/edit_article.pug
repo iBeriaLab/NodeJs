@@ -1,0 +1,42 @@
+extends ../layout/layout
+block content
+    .row
+        .col-md-3
+            .card
+                .card-header ნავიგაცია
+                .card-body.no-padder
+                    .list-group
+                    a.list-group-item.list-group-item-action(href='#')
+                        i.fa.fa-cog
+                        |  Navigation Item
+                    a.list-group-item.list-group-item-action(href='#')
+                        i.fa.fa-cog
+                        |  Navigation Item 2
+        .col-md-9
+            .card.card-default
+                .card-header
+                    p.mb-0 #{title}
+                        input#geoKeys.float-right(checked='checked', type='checkbox')
+                .card-body
+                    form(method='POST',  action='/articles/edit/'+article._id)
+                        .row
+                            .col-md-6
+                                .form-group
+                                    label Title:
+                                    input.form-control(name="title", type="text", value=article.title, onkeypress="return makeGeo(this,event);")
+                            .col-md-6
+                                    .form-group
+                                        label კატეგორია:
+                                        select.form-control(name="category", id="categorySelect")
+                                            option(value="---") აირჩიეთ კატეგორია
+                                            each category, i in categories
+                                                option(value=category.name)= category.name
+                            .col-md-12
+                                .form-group(style="display:none")
+                                    label Author:
+                                    input.form-control(name="author", type="text", value=article.author)
+                                .form-group
+                                    label Body:
+                                    textarea.jqte.form-control(onkeypress="return makeGeo(this,event);", name="body")= article.body
+                                input.btn.btn-primary.float-right(type="submit", value="სტატიის შესწორება")
+                .card-footer

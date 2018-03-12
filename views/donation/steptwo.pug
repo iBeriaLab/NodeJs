@@ -1,0 +1,48 @@
+extends ../layout/layout
+
+block content
+    .card.card-default
+        .card-header #{title}
+        .card-body
+            .row
+                .col-md-6.money-select
+                    label(for='c2') მიუთითეთ სასურველი თანხა
+
+                    
+                    form(action='/donation/callback', method='POST')
+                        .input-group
+                            input#custom-donation-amount.form-control.currency(type='hidden', name="amount", value=amount, min='0', step='0.1', data-number-to-fixed='2', data-number-stepfactor='100')
+                            script.stripe-button(
+                                    src='https://checkout.stripe.com/checkout.js',
+                                    data-key='pk_test_VE3Yt4mPMfR2IPLK2FOxzaYj',
+                                    data-amount=amount,
+                                    data-name='Georgian Union',
+                                    data-description='გადარიცხვა ',
+                                    data-image='/img/logo.png',
+                                    data-locale='auto',
+                                    data-currency='usd',
+                                    data-email=email
+                                    )
+                        
+
+                            //- script.
+                            //-     $('#custom-donation-amount').change(function() {
+                            //-         $('.stripe-button').data('amount', $(this).val());
+                            //-         console.log($('.stripe-button').data('amount'));
+                            //-     });
+                            //-var amount = document.getElementsByClassName('.stripe-button');
+                            //-$('.stripe-button').data('amount', document.getElementById("custom-donation-amount").value);
+                            //-amount.dataset.amount = document.getElementById('#custom-donation-amount').value * 100;
+                            //-console.log(num)
+
+                            
+                        script.
+                            document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+                        .text-center
+                            button#stripe-button.btn.btn-warning.mt-4(type="submit") 
+                                strong.text-white თანხის გადარიცხვა
+
+                       
+                .col-md-6
+                    p text2
+        .card-footer

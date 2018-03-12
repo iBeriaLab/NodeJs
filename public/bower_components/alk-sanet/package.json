@@ -1,0 +1,63 @@
+{
+  "_from": "alk-sanet",
+  "_id": "alk-sanet@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-6ezXub2i60bPI6nlduVPFBVs7YY=",
+  "_location": "/alk-sanet",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "alk-sanet",
+    "name": "alk-sanet",
+    "escapedName": "alk-sanet",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/alk-sanet/-/alk-sanet-1.0.0.tgz",
+  "_shasum": "e9ecd7b9bda2eb46cf23a9e576e54f14156ced86",
+  "_spec": "alk-sanet",
+  "_where": "D:\\xampp\\htdocs\\diaspora\\v0.1",
+  "author": {
+    "name": "Lado Lomidze",
+    "email": "lado.lomidze@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/web-fonts/alk-sanet/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "ALK Sanet Web-Font Package",
+  "homepage": "https://github.com/web-fonts/alk-sanet",
+  "keywords": [
+    "ttf",
+    "woff",
+    "woff2",
+    "svg",
+    "font",
+    "web-font",
+    "alk-sanet"
+  ],
+  "licenses": [
+    {
+      "type": "CC-BY-NC-ND 4.0",
+      "url": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "css/alk-sanet.css",
+  "name": "alk-sanet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-fonts/alk-sanet.git"
+  },
+  "version": "1.0.0"
+}

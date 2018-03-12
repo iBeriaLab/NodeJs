@@ -1,0 +1,28 @@
+extends ../layout/layout
+block content
+    .card.card-default
+        .card-header
+            p.mb-0 #{title}
+        .card-body
+            form(method='POST',  action='/pages/edit/'+page._id)
+                .row
+                    .col-md-12
+                        .form-group
+                            label სათაური:
+                            input.form-control(name="title", type="text", value=page.title)
+                .row
+                    .col-md-6
+                        .form-group
+                            label ბმული:
+                            input.form-control(name="slug", type="text", value=page.slug)
+                    .col-md-6
+                        .form-group
+                            //label სტრუქტურა:
+                            input.form-control(name="author", type="hidden", value=page.author)
+                .row
+                    .col-md-12
+                        .form-group
+                            label შინაარსი:
+                            textarea.form-control(name="body" rows="3")= page.body
+                        input.btn.btn-primary.float-right(type="submit", value="გვერდის შესწორება")
+        .card-footer

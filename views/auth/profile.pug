@@ -1,0 +1,195 @@
+extends ../layout/layout
+
+block content
+    .row
+        .col-md-3
+            include ../includes/profilesidebar
+        .col-md-9
+            if user
+                if user.isAdmin
+                    .row.mb-4
+                        .col-md-4
+                            .card.card-default
+                                .card-header
+                                    i.fas.fa-newspaper.text-info(style="font-size:22px;")
+                                    a.btn.btn-sm.btn-info.float-right.mr-1(href='#') სრულად
+                                .card-body.no-padder
+                                    div(style="width:100%;margin:0;")
+                                        canvas#profilepostChart(width='400', height='200')
+                                .card-footer
+                                    small
+                                        strong სულ სტატია:
+                        .col-md-4
+                            .card.card-default
+                                .card-header
+                                    i.fas.fa-money-bill-alt.text-warning(style="font-size:22px;")
+                                    a.btn.btn-sm.btn-warning.text-white.float-right.mr-1(href='#') სრულად
+                                .card-body.no-padder
+                                    div(style="width:100%;margin:0;")
+                                        canvas#profiledonationChart(width='400', height='200')
+                                .card-footer
+                                    small
+                                        strong სულ გადარიცხვა:
+                        .col-md-4
+                            .card.card-default
+                                .card-header
+                                    i.fas.fa-user-plus.text-success(style="font-size:22px;")
+                                    a.btn.btn-sm.btn-success.float-right.mr-1(href='#') სრულად
+                                .card-body.no-padder
+                                    div(style="width:100%;margin:0;")
+                                        canvas#profileusersChart(width='400', height='200')
+                                .card-footer
+                                    small
+                                        strong სულ წევრი:
+            .card.card-default
+                .card-header
+                    = user.firstName + ' ' + user.lastName
+                .card-body
+                    p= user.birthday
+                .card-footer
+                    p.m
+block scripts
+    script.
+        $(function() {
+            var ctx = document.getElementById('profilepostChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+                    datasets: [{
+                        label: "სტატია",
+                        backgroundColor: 'rgb(23, 162, 184)',
+                        borderColor: 'rgb(19, 134, 152)',
+                        data: [0, 10, 5, 2, 20, 30, 45,56,85,12,34,20],
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes:[{
+                            display: false,
+                            stacked:true,
+                        gridLines: {
+                            display:false,
+                            color:"rgba(255,99,132,0.2)"
+                        },
+                        ticks:{
+                            reverse:true,
+                            scaleLabel:function(f){
+                                return '';
+                            }
+                        }
+                    }],
+                    xAxes:[{
+                            display: false,
+                            gridLines: {
+                            display:false
+                        }
+                    }]
+                    }
+                }
+            });
+
+
+
+
+            var ctx = document.getElementById('profiledonationChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+                    datasets: [{
+                        label: "ჩარიცხვა",
+                        backgroundColor: 'rgb(255, 193, 7)',
+                        borderColor: 'rgb(255, 193, 7)',
+                        data: [0, 10, 5, 2, 20, 30, 45,56,85,12,34,20],
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes:[{
+                            display: false,
+                            stacked:true,
+                        gridLines: {
+                            display:false,
+                            color:"rgba(255,99,132,0.2)"
+                        },
+                        ticks:{
+                            reverse:false,
+                            scaleLabel:function(f){
+                                return '';
+                            }
+                        }
+                    }],
+                    xAxes:[{
+                            display: false,
+                            gridLines: {
+                            display:false
+                        }
+                    }]
+                    }
+                }
+            });
+
+
+            var ctx = document.getElementById('profileusersChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'radar',
+
+                // The data for our dataset
+                data: {
+                    labels: ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+                    datasets: [{
+                        label: "მომხმარებელი",
+                        backgroundColor: 'rgb(40, 167, 69)',
+                        borderColor: 'rgb(32, 127, 54)',
+                        data: [0, 10, 5, 2, 20, 30, 45,56,85,12,34,20],
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes:[{
+                            display: false,
+                            stacked:true,
+                        gridLines: {
+                            display:false,
+                            color:"rgba(255,99,132,0.2)"
+                        },
+                        ticks:{
+                            reverse:false,
+                            scaleLabel:function(f){
+                                return '';
+                            }
+                        }
+                    }],
+                    xAxes:[{
+                            display: false,
+                            gridLines: {
+                            display:false
+                        }
+                    }]
+                    }
+                }
+            })
+        });

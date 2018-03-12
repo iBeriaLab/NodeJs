@@ -1,0 +1,63 @@
+{
+  "_from": "bpg-venuri",
+  "_id": "bpg-venuri@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-ULBHKWQ1v3aUjmNzW4TBhFkvOeI=",
+  "_location": "/bpg-venuri",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "bpg-venuri",
+    "name": "bpg-venuri",
+    "escapedName": "bpg-venuri",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bpg-venuri/-/bpg-venuri-1.0.0.tgz",
+  "_shasum": "50b047296435bf76948e63735b84c184592f39e2",
+  "_spec": "bpg-venuri",
+  "_where": "D:\\xampp\\htdocs\\diaspora\\v0.1",
+  "author": {
+    "name": "Lado Lomidze",
+    "email": "lado.lomidze@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/web-fonts/bpg-venuri/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "BPG Venuri Web-Font Package",
+  "homepage": "https://github.com/web-fonts/bpg-venuri",
+  "keywords": [
+    "ttf",
+    "woff",
+    "woff2",
+    "svg",
+    "font",
+    "web-font",
+    "bpg-venuri"
+  ],
+  "licenses": [
+    {
+      "type": "CC-BY-NC-ND 4.0",
+      "url": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "css/bpg-venuri.css",
+  "name": "bpg-venuri",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-fonts/bpg-venuri.git"
+  },
+  "version": "1.0.0"
+}

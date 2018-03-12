@@ -1,0 +1,25 @@
+extends ../layout/layout
+
+block content
+    .card.card-default
+        .card-header #{title}
+        .card-body
+            .row
+                .col-md-6.money-select
+                    label(for='c2') მიუთითეთ სასურველი თანხა
+
+                    form(action="/donation/step/two" method="POST")
+                        .input-group
+                            span.input-group-addon $
+                            input.form-control.currency(type="number" name="amount" value="10.00" min='0', step='0.1', data-number-to-fixed='2', data-number-stepfactor='100')
+                        .input-group
+                            span.input-group-addon @
+                            input.form-control(type="text" name="email" value=user.email)
+                        .text-center
+                            button.btn.btn-warning.mt-4(type="submit")
+                                strong.text-white შემდეგი ნაბიჯი
+                
+                       
+                .col-md-6
+                    p text2
+        .card-footer

@@ -1,0 +1,25 @@
+extends ../layout/layout
+
+block content
+    .row
+        .col-md-3
+            img(src='/uploads/posts/'+article.poster, alt="")
+        .col-md-9
+            .card.card-default
+                .card-header
+                    = article.title
+                    .float-right
+                        .mb-0(style='color:#222;font-size:12px;' data-toggle="tooltip" data-placement="top" title=article.date.year + " წელი")
+                            = article.date.day + ' ' + article.date.month + ' ' + article.date.clock
+                .card-body
+                    != article.body + ' ' + article._id
+                .card-footer
+                    strong ავტორი: 
+                        small= author
+                    if user
+                        if user.isAdmin
+                            .btn-group.float-right(role='group')
+                                a.btn.btn-secondary.btn-sm(href='/articles/edit/'+article._id)
+                                    i.far.fa-edit
+                                a.btn.btn-danger.btn-sm.delete-article(href='#', data-id=article._id)
+                                    i.far.fa-trash-alt
