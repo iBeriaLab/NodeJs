@@ -18,6 +18,7 @@ router.post('/register', function(req, res){
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const isAdmin = false;
+    const isVerify = false;
     const avatar = '../uploads/avatars/avatar.png';
     const email = req.body.email;
     const username = req.body.username;
@@ -47,6 +48,7 @@ router.post('/register', function(req, res){
             firstName:firstName,
             lastName:lastName,
             isAdmin:isAdmin,
+            isVerify:isVerify,
             avatar:avatar,
             email:email,
             username:username,
@@ -65,7 +67,7 @@ router.post('/register', function(req, res){
                         console.log(err);
                         return;
                     } else {
-                        req.flash('success', 'You are now registered and can log in');
+                        req.flash('success', 'თქვენ წარმატებით გაიარეთ რეგისტრაცია, შეგიძლიათ შეხვიდეთ სისტემაში');
                         res.redirect('/users/login');
                     }
                 });
@@ -94,15 +96,19 @@ router.post('/login', function(req, res, next){
 //Logout
 router.get('/logout', function(req, res){
     req.logout();
-    req.flash('success', 'You are logged out');
+    req.flash('success', 'თქვენ გახვედით სისტემიდან');
     res.redirect('/users/login');
 });
 
 // Profile Page
 router.get('/:username', ensureAuthenticated, function(req,res){
-    res.render('auth/profile', {
-        title: 'User Profile'
-    });
+    User.find({isVerify:true}, function(err, members){
+        res.render('auth/profile', {
+            title: 'მომხმარებლის პირადი გვერდი',
+            members:members
+        });
+    }).count();
+    
 });
 
 //Facebook Login Routes
@@ -116,12 +122,30 @@ router.get('/auth/facebook/callback',
     });
 
 
+router.get('/', ensureAuthenticated, function(req,res){
+    
+    User.find({}, function(err, members){
+        if(err){
+            console.log(err);
+        } else{
+            res.render('auth/index', {
+                title: 'მომხმარებლები',
+                members:members
+            });
+        }
+    });
+});
+
+
+
+
+
 //Access Control
 function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next();
     } else {
-        req.flash('danger', 'Please login');
+        req.flash('danger', 'გთხოვთ გაიარეთ ავტორიზაცია');
         res.redirect('/users/login');
     }
 }

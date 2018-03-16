@@ -1,0 +1,57 @@
+{
+    "site.title": "Грузинская диаспора",
+
+    "nav.home": "Главная",
+	"nav.blog": "Блог",
+	"nav.gallery": "Галерея",
+	"nav.organisation": "Организация",
+	"nav.aboutus": "О нас",
+	"nav.events": "События",
+	"nav.projects": "Проекти",
+	"nav.donation": "Дарение",
+    "nav.contact": "Контакт",
+    "nav.profile": "Профиль",
+	"nav.settings": "Настройки",
+	"nav.logout": "Выйти",
+	"nav.signin": "Войти",
+    "nav.signup": "Регистрасия",
+    
+	"lang.georgian": "ქართული",
+	"lang.russian": "Русский",
+    "lang.english": "English",
+    
+	"login.signin": "Войти",
+	"login.username": "Имя пользователя:",
+	"login.password": "Пароль:",
+    "login.fb": "Логин в Facebook",
+    
+	"reg.signup": "Регистрация",
+	"reg.firstName": "Имя:",
+	"reg.lastName": "Фамилия:",
+	"reg.email": "Эл.адрес:",
+	"reg.username": "имя пользователя:",
+	"reg.password": "Пароль:",
+    "reg.confirm": "Подтвердите Пароль:",
+
+    "news.title":"Новости",
+	"news.more":"Более",
+	"news.add.category":"Добавить категорию",
+	"news.add.news":"Добавить новость",
+	"news.all":"Все",
+	"news.author":"Автор:",
+	"news.share":"Поделиться",
+    "news.year":"Год",
+	"news.go_back":"Назад",
+    
+    "photo.albums":"Фотоальбомы",
+	"photo.album.more":"Более",
+    "photo.album.add":"Добавить альбом",
+    
+	"amount.insert.desired":"Укажите желаемую сумму",
+    "amount.next.step":"Следующий шаг",
+    "amount.money.transfer":"Перевод денег",
+    "amount.money.indicated":"Указанная сумма",
+    "amount.money.transfer.completed":"Деньги переведены",
+	"amount.money.transfer.success.completed":"Денежный перевод успешно завершен",
+	"amount.return.home":"Вернуться на главную страницу"
+}

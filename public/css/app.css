@@ -194,7 +194,8 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: .5rem; }
+  margin-bottom: .5rem;
+  font-family: "ALK Sanet", sans-serif; }
 
 button {
   border-radius: 0; }
@@ -1743,6 +1744,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .btn {
   display: inline-block;
   font-weight: 400;
+  font-family: "ALK Sanet", sans-serif;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3171,6 +3173,7 @@ tbody.collapse.show {
 
 .breadcrumb {
   display: flex;
+  font-family: "ALK Sanet", sans-serif;
   flex-wrap: wrap;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
@@ -6496,6 +6499,12 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   padding-top: 90px; }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #e9ecef; }
+
 .no-padder {
   padding: 0; }
 
@@ -6645,7 +6654,8 @@ img {
   color: #d02c2c;
   font-weight: bold;
   border-top: 1px solid #d02c2c;
-  font-size: 16px; }
+  font-size: 16px;
+  font-family: "ALK Sanet", sans-serif; }
 .post-card .post-img {
   z-index: 2;
   width: 100%;
@@ -6668,6 +6678,7 @@ img {
   .post-card .post-img small {
     position: absolute;
     background-color: #d02c2c;
+    font-family: "ALK Sanet", sans-serif;
     z-index: 3;
     border-top-right-radius: calc(0.25rem - 1px);
     border-bottom-left-radius: calc(5rem - 1px);
@@ -6684,6 +6695,13 @@ img {
   border-bottom-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(5rem - 1px);
   padding: 1px 30px; }
+
+.post-date {
+  font-size: 16px;
+  font-family: "ALK Sanet", sans-serif;
+  text-align: center;
+  /*color: $primary;*/
+  font-weight: bold; }
 
 .flag-switch input[type=checkbox] {
   height: 0;
@@ -6725,7 +6743,11 @@ img {
     width: 100%; }
   .money-select input.currency {
     text-align: right;
-    padding-right: 15px; }
+    padding-right: 15px;
+    color: #d02c2c;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "ALK Sanet", sans-serif; }
   .money-select .input-group .form-control {
     float: none; }
   .money-select .input-group .input-buttons {
@@ -6744,6 +6766,9 @@ img {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
+.transfer-img {
+  padding: 10px 200px 20px 200px; }
+
 .imgUpload {
   font-size: 60px;
   text-align: center;
@@ -6759,5 +6784,274 @@ img {
   .gallery-img img {
     height: 195px;
     object-fit: cover; }
+
+.user-pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem; }
+
+.jumbotron h4 {
+  color: #d02c2c;
+  margin-bottom: 20px;
+  font-family: "ALK Sanet", sans-serif; }
+
+.nav-container .title {
+  font-family: "ALK Sanet", sans-serif; }
+.nav-container .route {
+  position: relative;
+  list-style-type: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  top: 0px;
+  margin-top: 0px;
+  max-height: 100% !important;
+  width: 50%;
+  background: #dee0e2;
+  border-radius: 2px;
+  z-index: -1; }
+  .nav-container .route .ui-icon {
+    cursor: move; }
+    .nav-container .route .ui-icon svg {
+      font-size: 6px;
+      margin-left: -7px; }
+.nav-container .route span {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  -ms-transform: scale(2);
+  /* IE 9 */
+  -webkit-transform: scale(2);
+  /* Chrome, Safari, Opera */
+  transform: scale(2);
+  z-index: 10px; }
+.nav-container .route .title {
+  position: absolute;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  padding-top: 0;
+  height: 30px;
+  width: 400px;
+  text-indent: 14px;
+  background: #d02c2c;
+  border-radius: 0.3rem;
+  box-shadow: 0px 0px 0px 1px #911f1f;
+  pointer-events: none;
+  font-size: 16px;
+  color: #fff;
+  font-family: "ALK Sanet", sans-serif; }
+  .nav-container .route .title .h3 {
+    font-size: 16px;
+    color: #fff; }
+.nav-container .first-title {
+  margin-left: 0; }
+.nav-container .space {
+  position: relative;
+  list-style-type: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin-left: 50px;
+  width: 50px;
+  top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+  z-index: 1; }
+.nav-container .first-space {
+  margin-left: 0; }
+
+.src-box .card img {
+  padding: 30px 60px 11px 60px; }
+.src-box .card h5 {
+  text-align: center;
+  color: #d02c2c;
+  font-family: "ALK Sanet", sans-serif;
+  font-size: 14px;
+  font-weight: bold; }
+.src-box .card p {
+  padding: 10px 20px 10px 20px;
+  font-size: 12px; }
+
+.map-world {
+  width: 100%;
+  height: 500px;
+  margin-top: 20px; }
+
+.category-list .list-group .list-group-item {
+  /*border: 0;*/
+  border: 1px solid #e4e4e4;
+  font-family: "ALK Sanet", sans-serif; }
+.category-list .list-group .list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
+.category-list .list-group .list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.sidebar-list .list-group-item {
+  border: 0; }
+.sidebar-list .list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
+.sidebar-list .list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-family: "ALK Sanet", sans-serif; }
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #f5f8fa;
+  border-color: #d02c2c #efefef #e2e2e2; }
+
+.nav-link {
+  display: block;
+  padding: 0.8rem 2.3rem; }
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #d02c2c #ffffff #dee2e6; }
+
+.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  border: 1px solid #d02c2c;
+  background: transparent;
+  padding: 3px;
+  color: #d02c2c;
+  cursor: pointer;
+  line-height: 10px;
+  text-align: center;
+  box-sizing: content-box; }
+
+.jvectormap-zoomin:hover, .jvectormap-zoomout:hover, .jvectormap-goback:hover {
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #d02c2c;
+  padding: 3px;
+  color: #fff;
+  cursor: pointer;
+  line-height: 10px;
+  text-align: center;
+  box-sizing: content-box; }
+
+.owl-carousel .owl-item {
+  height: 80px; }
+
+@media (min-width: 576px) {
+  .owl-carousel .owl-item {
+    height: 100px; } }
+@media (min-width: 768px) {
+  .owl-carousel .owl-item {
+    height: 150px; } }
+@media (min-width: 992px) {
+  .owl-carousel .owl-item {
+    height: 200px; } }
+@media (min-width: 1200px) {
+  .owl-carousel .owl-item {
+    height: 250px; } }
+.contact-map {
+  width: 100%;
+  height: 700px; }
+  .contact-map #map {
+    width: 100%;
+    height: 100%; }
+  .contact-map .contact-card {
+    top: 182px;
+    position: absolute;
+    width: 80%;
+    min-height: 300px;
+    z-index: 9;
+    margin-left: 20px; }
+
+@media (min-width: 576px) {
+  .contact-map {
+    width: 100%;
+    height: 800px; }
+    .contact-map #map {
+      width: 100%;
+      height: 100%; }
+    .contact-map .contact-card {
+      top: 182px;
+      position: absolute;
+      width: 80%;
+      min-height: 300px;
+      z-index: 9;
+      margin-left: 30px; } }
+@media (min-width: 768px) {
+  .contact-map {
+    width: 100%;
+    height: 800px; }
+    .contact-map #map {
+      width: 100%;
+      height: 100%; }
+    .contact-map .contact-card {
+      top: 182px;
+      position: absolute;
+      width: 60%;
+      min-height: 300px;
+      z-index: 9;
+      margin-left: 30px; } }
+@media (min-width: 992px) {
+  .contact-map {
+    width: 100%;
+    height: 800px; }
+    .contact-map #map {
+      width: 100%;
+      height: 100%; }
+    .contact-map .contact-card {
+      top: 182px;
+      position: absolute;
+      width: 30%;
+      min-height: 300px;
+      z-index: 9;
+      margin-left: 30px; } }
+@media (min-width: 1200px) {
+  .contact-map {
+    width: 100%;
+    height: 800px; }
+    .contact-map #map {
+      width: 100%;
+      height: 100%; }
+    .contact-map .contact-card {
+      top: 182px;
+      position: absolute;
+      width: 30%;
+      min-height: 300px;
+      z-index: 9;
+      margin-left: 30px; } }
+.contact-map {
+  width: 100%;
+  height: 800px; }
+  .contact-map #map {
+    width: 100%;
+    height: 100%; }
+  .contact-map .contact-card {
+    top: 182px;
+    position: absolute;
+    width: 30%;
+    min-height: 300px;
+    z-index: 9;
+    margin-left: 30px; }
+    .contact-map .contact-card .list ul {
+      padding: 0;
+      list-style: none; }
+    .contact-map .contact-card .list strong {
+      color: #d02c2c;
+      font-weight: bold;
+      font-family: "ALK Sanet", sans-serif; }
+    .contact-map .contact-card .list p {
+      font-family: "ALK Sanet", sans-serif;
+      font-size: 18px; }
 
 /*# sourceMappingURL=app.css.map */

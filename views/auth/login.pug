@@ -2,23 +2,23 @@ extends ../layout/layout
 block content
         .row
             .col-md-6
-                h3 llllll
+                img(src="/img/login-card.svg", alt="", style='padding: 0 60px 0 100px;width: 80%;')
             .col-md-6
                 form(method='POST',  action="/users/login")
                     .card.card-default
                         .card-header
-                            h4.mb-0 #{title}
+                            h4.mb-0= __('login.signin')
                         .card-body
                             .form-group
-                                label ზედმეტსახელი:
+                                label= __('login.username')
                                 input.form-control(name="username", type="text")
                             .form-group
-                                label პაროლი:
+                                label= __('login.password')
                                 input.form-control(name="password", type="password")
                         .card-footer
                             .form-group.mb-0
-                                input.btn.btn-primary(type="submit", value="ავტორიზაცია")
-                                a.btn.fb-btn.ml-1(href="/users/auth/facebook") ავტორიზაცია Facebook-ით
+                                input.btn.btn-primary(type="submit", value=__('login.signin'))
+                                a.btn.fb-btn.ml-1(href="/users/auth/facebook")=__('login.fb')
                     
         .row
             .col-md-12

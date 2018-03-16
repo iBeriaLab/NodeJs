@@ -19,10 +19,6 @@ const pageSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    structure:{
-        type:String,
-        required: true
-    },
     date:{
         type:String
     }

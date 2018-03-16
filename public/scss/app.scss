@@ -17,7 +17,12 @@
 body{
   padding-top: 90px;
 }
-
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgb(233, 236, 239);
+}
 .no-padder{
   padding: 0;
 }
@@ -222,6 +227,7 @@ img {
       font-weight: bold;
       border-top:1px solid $primary;
       font-size: 16px;
+      font-family: "ALK Sanet", sans-serif;
     }
   }
   .post-img{
@@ -251,6 +257,7 @@ img {
     small{
       position: absolute;
       background-color: $primary;
+      font-family: "ALK Sanet", sans-serif;
       z-index: 3;
       border-top-right-radius: calc(0.25rem - 1px);
       border-bottom-left-radius: calc(5rem - 1px);
@@ -273,6 +280,18 @@ img {
     padding: 1px 30px;
   }
 }
+
+//Post Date
+.post-date{
+  font-size: 16px;
+  font-family: "ALK Sanet", sans-serif;
+  text-align: center;
+  /*color: $primary;*/
+  font-weight: bold;
+}
+
+
+
 
 //Switchers
 .flag-switch{
@@ -339,6 +358,10 @@ img {
   input.currency {
       text-align: right;
       padding-right: 15px;
+      color: $primary;
+      font-weight:bold;
+      font-size: 18px;
+      font-family: "ALK Sanet", sans-serif;
   }
   .input-group .form-control {
       float: none;
@@ -362,6 +385,9 @@ img {
   }
 }
 
+.transfer-img{
+  padding: 10px 200px 20px 200px;
+}
 
 //gallery
 
@@ -382,5 +408,397 @@ img {
   img{
     height: 195px;
     object-fit: cover;
+  }
+}
+
+//Pagination
+.user-pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+
+//Navigation tree view
+.jumbotron{
+  h4{
+    color: $primary;
+    margin-bottom: 20px;
+    font-family: "ALK Sanet", sans-serif;
+  }
+}
+
+.nav-container{
+  .title{
+    font-family: "ALK Sanet", sans-serif;
+  }
+  .route {
+    position: relative;
+    list-style-type: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    margin-top: 0px;
+    max-height: 100% !important;
+    width: 50%;
+    background: #dee0e2;
+    border-radius: 2px;
+    z-index: -1;
+
+    .ui-icon{
+      cursor: move;
+      svg{
+        font-size: 6px;
+        margin-left: -7px;
+      }
+    }
+  }
+  
+  .route span {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    -ms-transform: scale(2);
+    /* IE 9 */
+  
+    -webkit-transform: scale(2);
+    /* Chrome, Safari, Opera */
+  
+    transform: scale(2);
+    z-index: 10px;
+  }
+  
+  .route .title {
+    position: absolute;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    padding-top: 0;
+    height: 30px;
+    width: 400px;
+    text-indent: 14px;
+    background: $primary;
+    border-radius: 0.3rem;
+    box-shadow: 0px 0px 0px 1px $dark-primary;
+    pointer-events: none;
+    font-size:16px;
+    color:$white;
+    font-family: "ALK Sanet", sans-serif;
+
+    .h3 {
+      font-size: 16px;
+      color: $white;
+    }
+  }
+  
+  .first-title { margin-left: 0; }
+  
+  .space {
+    position: relative;
+    list-style-type: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    width: 50px;
+    top: 50px;
+    padding-bottom: 50px;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .first-space { margin-left: 0; }
+}
+
+//Services
+.src-box{
+  .card{
+    img{
+      padding: 30px 60px 11px 60px;
+    }
+    h5{
+      text-align: center;
+      color: $primary;
+      font-family: "ALK Sanet", sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    p{
+      padding: 10px 20px 10px 20px;
+      font-size: 12px;
+    }
+  }
+}
+
+
+//main map
+.map-world{
+  width: 100%;
+  height: 500px;
+  margin-top: 20px;
+}
+
+
+//Categories
+.category-list{
+  .list-group{
+    .list-group-item{
+      /*border: 0;*/
+      border: 1px solid #e4e4e4;
+      font-family: "ALK Sanet", sans-serif;
+    }
+    .list-group-item:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .list-group-item:last-child {
+      margin-bottom: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+.sidebar-list{
+  .list-group-item{
+    border: 0;
+  }
+  .list-group-item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+
+
+
+
+
+//Tabs
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-family: "ALK Sanet", sans-serif;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #f5f8fa;
+  border-color: $primary #efefef #e2e2e2;
+}
+.nav-link {
+  display: block;
+  padding: 0.8rem 2.3rem;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #d02c2c #ffffff #dee2e6;
+}
+
+
+// Main Map
+.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  border:1px solid $primary;
+  background: transparent;
+  padding: 3px;
+  color: $primary;
+  cursor: pointer;
+  line-height: 10px;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.jvectormap-zoomin:hover, .jvectormap-zoomout:hover, .jvectormap-goback:hover {
+  position: absolute;
+  left: 10px;
+  border-radius: 50%;
+  border:1px solid #333;
+  background: $primary;
+  padding: 3px;
+  color: $white;
+  cursor: pointer;
+  line-height: 10px;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+
+
+//item slider
+@include media-breakpoint-up(xs) { 
+  .owl-carousel{
+    .owl-item{
+      height:80px;
+    }
+  }
+ }
+@include media-breakpoint-up(sm) { 
+  .owl-carousel{
+    .owl-item{
+      height:100px;
+    }
+  }
+ }
+@include media-breakpoint-up(md) { 
+  .owl-carousel{
+    .owl-item{
+      height:150px;
+    }
+  }
+ }
+@include media-breakpoint-up(lg) { 
+  .owl-carousel{
+    .owl-item{
+      height:200px;
+    }
+  }
+ }
+@include media-breakpoint-up(xl) { 
+  .owl-carousel{
+    .owl-item{
+      height:250px;
+    }
+  }
+ }
+
+
+ //Contact Page
+
+ @include media-breakpoint-up(xs) { 
+  .contact-map{
+    width: 100%;
+    height:700px;
+    
+    #map{
+      width:100%;
+      height: 100%;
+    }
+    .contact-card{
+     top: 182px;
+     position: absolute;
+     width: 80%;
+     min-height: 300px;
+     z-index: 9;
+     margin-left: 20px;
+    }
+  }
+ }
+@include media-breakpoint-up(sm) { 
+  .contact-map{
+    width: 100%;
+    height:800px;
+    
+    #map{
+      width:100%;
+      height: 100%;
+    }
+    .contact-card{
+     top: 182px;
+     position: absolute;
+     width: 80%;
+     min-height: 300px;
+     z-index: 9;
+     margin-left: 30px;
+    }
+  }
+ }
+@include media-breakpoint-up(md) { 
+  .contact-map{
+    width: 100%;
+    height:800px;
+    
+    #map{
+      width:100%;
+      height: 100%;
+    }
+    .contact-card{
+     top: 182px;
+     position: absolute;
+     width: 60%;
+     min-height: 300px;
+     z-index: 9;
+     margin-left: 30px;
+    }
+  }
+ }
+@include media-breakpoint-up(lg) { 
+  .contact-map{
+    width: 100%;
+    height:800px;
+    
+    #map{
+      width:100%;
+      height: 100%;
+    }
+    .contact-card{
+     top: 182px;
+     position: absolute;
+     width: 30%;
+     min-height: 300px;
+     z-index: 9;
+     margin-left: 30px;
+    }
+  }
+ }
+@include media-breakpoint-up(xl) { 
+  .contact-map{
+    width: 100%;
+    height:800px;
+    
+    #map{
+      width:100%;
+      height: 100%;
+    }
+    .contact-card{
+     top: 182px;
+     position: absolute;
+     width: 30%;
+     min-height: 300px;
+     z-index: 9;
+     margin-left: 30px;
+    }
+  }
+ }
+ .contact-map{
+  width: 100%;
+  height:800px;
+  
+  #map{
+    width:100%;
+    height: 100%;
+  }
+  .contact-card{
+   top: 182px;
+   position: absolute;
+   width: 30%;
+   min-height: 300px;
+   z-index: 9;
+   margin-left: 30px;
+
+   .list{
+     ul{
+       padding: 0;
+       list-style: none;
+     }
+     
+     strong{
+       color:$primary;
+       font-weight: bold;
+       font-family: "ALK Sanet", sans-serif;
+     }
+     p{
+      font-family: "ALK Sanet", sans-serif;
+      font-size:18px;
+     }
+   }
   }
 }

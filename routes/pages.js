@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const ars = require('arslugify');
 
 //Articles Model
 const Page = require('../models/pages');
@@ -21,7 +22,7 @@ router.get('/', function(req, res){
     });
 });
 
-// Get Add Articles Page
+// Get Add Page Page
 router.get('/add', ensureAuthenticated, function(req, res, next){
     res.render('pages/add_page', {
         title: 'Add Page'
@@ -49,10 +50,9 @@ router.post('/add', function(req, res, next){
     }else{
         const page = new Page();
         page.title = req.body.title;
-        page.slug = req.body.slug;
+        page.slug = ars(req.body.title);
         page.author = req.user._id;
         page.body = req.body.body;
-        page.structure = req.body.structure;
         page.date = dateString;
 
         page.save(function(err){
@@ -67,11 +67,15 @@ router.post('/add', function(req, res, next){
 });
 
 // Get Single Page
-router.get('/:id', function(req, res, next){
-    Page.findById(req.params.id, function(err, page){
-      res.render('pages/page', {
-          page: page
-      });
+router.get('/:slug', function(req, res, next){
+    Page.find({"slug" : req.params.slug}, function(err, page){
+        //console.log(article[0].title);
+        User.findById(page[0].author, function(err, user){
+            res.render('pages/page', {
+                page: page[0],
+                author: user.firstName + ' ' + user.lastName,
+            });
+        });
     });
 });
 
@@ -93,10 +97,9 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 router.post('/edit/:id', function(req, res, next){
     const page = {};
     page.title = req.body.title;
-    page.slug = req.body.slug;
+    page.slug = ars(req.body.title);
     page.author = req.body.author;
     page.body = req.body.body;
-    page.structure = req.body.structure;
 
     const query = {_id:req.params.id};
 

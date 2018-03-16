@@ -7,6 +7,9 @@ const categoriesSchema = mongoose.Schema({
         type:String,
         required: true
     },
+    slug:{
+        type:String
+    },
     icon:{
         type:String,
         required: true

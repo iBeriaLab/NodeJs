@@ -1,0 +1,174 @@
+extends ../layout/layout
+
+block content
+    .row
+        .col-md-3
+            include ../includes/profilesidebar
+        .col-md-9
+
+            .jumbotron(style='padding:20px;')
+                form(method='POST',  action="/navs")
+                    h4 ნავიგაციის დამატება
+                    .input-group.mb-3
+                        .input-group-prepend
+                            span#basic-addon1.input-group-text @
+                        input.form-control(type='text', name='title', placeholder='სათაური', aria-label='Username', aria-describedby='basic-addon1')
+                    .row
+                        .col-md-6
+                            .input-group.mb-3
+                                .input-group-prepend
+                                    span#basic-addon3.input-group-text https://site.com
+                                input.form-control(type='text', aria-describedby='basic-addon3', name='url', id='urlLoad', value='')
+                        .col-md-6
+                            .input-group.mb-3
+                                .input-group-prepend
+                                select.form-control(name="parent", id="pageSelect", onchange="pageSelectFunction(event)")
+                                    option(value="---") აირჩიეთ გვერდი ან დატოვეთ ცარიელი
+                                    each page, i in pages
+                                        option(value='/page/'+page.slug)= page.title
+                    .row
+                        .col-md-6
+                            .input-group.mb-3
+                                .input-group-prepend
+                                    span#basic-addon1.input-group-text @
+                                input.form-control(type='text', placeholder='მაგ: fas fa-microchip', aria-label='Username', aria-describedby='basic-addon1', name='icon')
+                        .col-md-6
+                            .input-group.mb-3
+                                .input-group-prepend
+                                select.form-control(name="parent", id="navSelect")
+                                    option(value="---") აირჩიეთ მშობელი
+                                    each navigation, i in navigations
+                                        option(value=navigation.id)= navigation.title
+                    
+                    .input-group.mb-0.text-right
+                        .input-goup-prepend
+                        input.float-right.btn.btn-primary(type='submit', value='დამატება')
+
+            .nav-container
+                h3#title0.title(style='margin-bottom: -2.5rem;') დახარისხება
+                ul#space0.space.first-space
+                    each navigation, i in navigations
+                        if !navigation.parent
+                            li.route
+                                h3#title2.title.h3= navigation.title
+                                span.ui-icon.ui-icon-arrow-4-diag
+                                    i.fas.fa-arrows-alt
+                                ul#space2.space
+                                    if child[0].parent == navigation._id
+                                        li.route
+                                            h3#title3.title.h3= child[0].title
+                                            span.ui-icon.ui-icon-arrow-4-diag
+                                                i.fas.fa-arrows-alt
+                                            ul#space3.space
+                                
+                
+                    //- a.btn.btn-link.btn-sm.delete-nav.text-white.float-left(href='#',style='z-index:3;', data-id=)
+                    //-     i.far.fa-trash-alt
+                    //- li.route
+                    //-     h3#title1.title.h3
+                    //-         .pt-1.float-left.pl-4
+                    //-             | მთავარი
+                    //-     span.ui-icon.ui-icon-arrow-4-diag
+                    //-         i.fas.fa-arrows-alt
+                    //-     ul#space1.space
+                    //- li.route
+                    //-     h3#title4.title.h3 ბლოგი
+                    //-     span.ui-icon.ui-icon-arrow-4-diag
+                    //-         i.fas.fa-arrows-alt
+                    //-     ul#space4.space
+                    //- li.route
+                    //-     h3#title4.title.h3 გალერეა
+                    //-     span.ui-icon.ui-icon-arrow-4-diag
+                    //-         i.fas.fa-arrows-alt
+                    //-     ul#space4.space
+                    //- li.route
+                    //-     h3#title2.title.h3 ორგანიზაცია
+                    //-     span.ui-icon.ui-icon-arrow-4-diag
+                    //-         i.fas.fa-arrows-alt
+                    //-     ul#space2.space
+                    //-         li.route
+                    //-             h3#title3.title.h3 ჩვენ შესახებ
+                    //-             span.ui-icon.ui-icon-arrow-4-diag
+                    //-                 i.fas.fa-arrows-alt
+                    //-             ul#space3.space
+                    //-         li.route
+                    //-             h3#title3.title.h3 ღონისძიებები
+                    //-             span.ui-icon.ui-icon-arrow-4-diag
+                    //-                 i.fas.fa-arrows-alt
+                    //-             ul#space3.space
+                    //-         li.route
+                    //-             h3#title3.title.h3 პროექტები
+                    //-             span.ui-icon.ui-icon-arrow-4-diag
+                    //-                 i.fas.fa-arrows-alt
+                    //-             ul#space3.space
+                    //-         li.route
+                    //-             h3#title3.title.h3 შემოწირულობა
+                    //-             span.ui-icon.ui-icon-arrow-4-diag
+                    //-                 i.fas.fa-arrows-alt
+                    //-             ul#space3.space
+                    //- li.route
+                    //-     h3#title4.title.h3 კონტაქტი
+                    //-     span.ui-icon.ui-icon-arrow-4-diag
+                    //-         i.fas.fa-arrows-alt
+                    //-     ul#space4.space
+        block scripts
+            script(src='//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
+            script.
+                function pageSelectFunction(e) {
+                    document.getElementById("urlLoad").value = e.target.value
+                }
+
+                $(document).ready(function(){
+
+                calcWidth($('#title0'));
+
+                window.onresize = function(event) {
+                    console.log("window resized");
+
+                    //method to execute one time after a timer
+
+                    };
+
+                //recursively calculate the Width all titles
+                function calcWidth(obj){
+                console.log('---- calcWidth -----');
+
+                var titles = 
+                $(obj).siblings('.space').children('.route').children('.title');
+
+                $(titles).each(function(index, element){
+                var pTitleWidth = parseInt($(obj).css('width'));
+                var leftOffset = parseInt($(obj).siblings('.space').css('margin-left'));
+
+                var newWidth = pTitleWidth - leftOffset;
+
+                if ($(obj).attr('id') == 'title0'){
+                console.log("called");
+
+                newWidth = newWidth;
+                }
+
+                $(element).css({
+                'width': newWidth,
+                })
+
+                calcWidth(element);
+                });
+
+                }
+
+                $('.space').sortable({
+                connectWith:'.space',
+                // handle:'.title',
+                // placeholder: ....,
+                tolerance:'intersect',
+                over:function(event,ui){
+                },
+                receive:function(event, ui){
+                calcWidth($(this).siblings('.title'));
+                },
+                });
+
+                $('.space').disableSelection();
+
+                });

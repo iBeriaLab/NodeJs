@@ -30,15 +30,114 @@ block content
                             a(href="/photos/gallery/" + gallery.id)
                                 img.img-fluid(src='/uploads/gallery/' + gallery.cover, alt=gallery.title)
     .row
-        .col-md-4.col-xs-12
-            .card 1
-        .col-md-4.col-xs-12
-            .card 2
-        .col-md-4.col-xs-12
-            .card 3
+        .col-xs-12.col-md-6.col-lg-3.src-box.mb-4
+            .card.border-top.border-primary
+                img(src="/img/group.svg", alt="")
+                h5  შემოგვიერთდი
+                p   ლორემ იპსუმ გაივლიდა დაწიოკება ქარგლებივით, მიქელანჯელოც გადმოქცეული მკერდით მივიღებდი შეუძინოთო. დავაგდე მოითხოვდი შეიგინეს, ჩვეულებები, აკლიათ მიმეღო პლანეტით. გარდაიცვალნენ კი დამუნათება განვასახიერებდი დაბრუნდებოდა, დაღონებული ინახებოდა. 
+        .col-xs-12.col-md-6.col-lg-3.src-box.mb-4
+            .card.border-top.border-primary
+                img(src="/img/voice.svg", alt="")
+                h5  ბევრი ხმა ერთზე უკეთესია
+                p   ლორემ იპსუმ გაივლიდა დაწიოკება ქარგლებივით, მიქელანჯელოც გადმოქცეული მკერდით მივიღებდი შეუძინოთო. დავაგდე მოითხოვდი შეიგინეს, ჩვეულებები, აკლიათ მიმეღო პლანეტით. გარდაიცვალნენ კი დამუნათება განვასახიერებდი დაბრუნდებოდა, დაღონებული ინახებოდა. 
+        .col-xs-12.col-md-6.col-lg-3.src-box.mb-4
+            .card.border-top.border-primary
+                img(src="/img/idea.svg", alt="")
+                h5  ერთად ვაკეთოთ ქართული საქმე
+                p   ლორემ იპსუმ გაივლიდა დაწიოკება ქარგლებივით, მიქელანჯელოც გადმოქცეული მკერდით მივიღებდი შეუძინოთო. დავაგდე მოითხოვდი შეიგინეს, ჩვეულებები, აკლიათ მიმეღო პლანეტით. გარდაიცვალნენ კი დამუნათება განვასახიერებდი დაბრუნდებოდა, დაღონებული ინახებოდა. 
+        .col-xs-12.col-md-6.col-lg-3.src-box.mb-4
+            .card.border-top.border-primary
+                img(src="/img/worldwide.svg", alt="")
+                h5 მსოფლისოს ნებისმიერ წერტილში
+                p   ლორემ იპსუმ გაივლიდა დაწიოკება ქარგლებივით, მიქელანჯელოც გადმოქცეული მკერდით მივიღებდი შეუძინოთო. დავაგდე მოითხოვდი შეიგინეს, ჩვეულებები, აკლიათ მიმეღო პლანეტით. გარდაიცვალნენ კი დამუნათება განვასახიერებდი დაბრუნდებოდა, დაღონებული ინახებოდა.
+
+    .row
+        .map-world
 block scripts
     script(src='/js/owl.carousel.js')
     script.
         $(document).ready(function(){
-            $('#slider').owlCarousel();
+            $('#slider').owlCarousel({
+                loop:true,
+                autoplay:true,
+                autoplayTimeout:4000,
+                autoplayHoverPause:true
+            });
         });
+    script.
+        var markers = [
+                    {
+                        latLng: ["55.751244", "37.618423"],
+                        name: "რუსეთის ქართული დიასპორა",
+                        weburl: ["1"]
+                    },
+                    {
+                        latLng: ["44.836151", "-0.580816"],
+                        name: "საფრანგეთის ქართული დიასპორა",
+                        weburl: ["1"]
+                    },
+                    {
+                        latLng: ["50.090473", "14.401048"],
+                        name: "ჩეხეთის ქართული დიასპორა",
+                        weburl: ["1"]
+                    },
+                    {
+                        latLng: ["37.983810", "23.727539"],
+                        name: "საბერძნეთის ქართული დიასპორა",
+                        weburl: ["1"]
+                    }
+        ];
+        $(function() {
+            $('.map-world').vectorMap({
+                        map: 'world_mill_en',
+                        normalizeFunction: 'polynomial',
+                        backgroundColor: 'transparent',
+                        zoomOnScroll: false,
+                        regionStyle: {
+                            initial: {
+                                fill: '#e4e4e4'
+                            },
+                            hover: {
+                                cursor: 'pointer'
+                            },
+                            selected: {
+                                fill: '#e43232'
+                            }
+                        },
+
+                        hoverOpacity: 0.7,
+                        hoverColor: false,
+                        markerStyle: {
+                            initial: {
+                                r: 7,
+                                'fill': 'transparent',
+                                'fill-opacity': 0.8,
+                                'stroke': '#d02c2c',
+                                'stroke-width': 1.5,
+                                'stroke-opacity': 0.9
+                            },
+                            hover: {
+                                'fill': '#d02c2c',
+                                'stroke': '#222',
+                                'fill-opacity': 1,
+                                'stroke-width': 1.5,
+                                'cursor': 'pointer'
+                            }
+                        },
+                        markers: markers,
+                        onMarkerClick: function (events, index, weburl) {
+
+                            //alert(markers[index].weburl);
+
+                            url = '/communities/'+ markers[index].weburl;
+
+                            //$(location).attr('href','app/capital/',url);
+
+                            window.location.href = url;
+
+                        },
+                        regionsSelectable: false,
+                        regionsSelectableOne: false
+
+                    });
+                })

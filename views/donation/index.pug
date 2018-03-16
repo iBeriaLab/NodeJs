@@ -6,20 +6,21 @@ block content
         .card-body
             .row
                 .col-md-6.money-select
-                    label(for='c2') მიუთითეთ სასურველი თანხა
+                    label(for='c2')=__('amount.insert.desired')
 
                     form(action="/donation/step/two" method="POST")
-                        .input-group
+                        .input-group.mb-2
                             span.input-group-addon $
                             input.form-control.currency(type="number" name="amount" value="10.00" min='0', step='0.1', data-number-to-fixed='2', data-number-stepfactor='100')
                         .input-group
-                            span.input-group-addon @
                             input.form-control(type="text" name="email" value=user.email)
                         .text-center
                             button.btn.btn-warning.mt-4(type="submit")
-                                strong.text-white შემდეგი ნაბიჯი
+                                strong.text-white=__('amount.next.step')
                 
                        
                 .col-md-6
-                    p text2
+                    .transfer-img
+                        img(src="/img/rich.svg", alt="")
+                    p   თემთა ანგარების ვფიქრობდი ართობდა, არჩეული მიადგებიან ჯავრით კარებისკენ. გაფაციცებული ღელვით მოსასხამები აიღო დუნკანივით ვფიქრობდი ერისთავმა გაუყრელნი განცდითაც, პრორექტორიც, უკვირსო მიგნება, ჩამედინა წინასწარმეტყველნი. ანდაზის წამოდექი კარებისკენ ქეთინოზე წინასწარმეტყველნი გაუყრელნი. ართობდა სიარულის თემთა მოსწავლის ირჩევ ვიგდებ უდარბაზო. სიოთი ვიგდებ ლონდა თაროებზე ოპერიდან ართობდა წინასწარმეტყველნი კარებისკენ დამბრუნებოდა ინტეგრაცია. ვძმაკაცობ მოატან სიოთი გატირებდე ართობდა, ღორთა, გრომოვისთვის ილამაზებდა დაკავშირებული. ვიგდებ სოფელსაო კამზოლები მნათობი სატანის ნაშთიც, ჩამოაღწევს გამოიწერა ჩამედინა.
         .card-footer

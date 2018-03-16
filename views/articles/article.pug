@@ -3,18 +3,41 @@ extends ../layout/layout
 block content
     .row
         .col-md-3
-            img(src='/uploads/posts/'+article.poster, alt="")
+            .card.card-default.post-card.mb-4
+                .post-img
+                    a(href='/uploads/posts/'+article.poster, data-toggle='lightbox', data-gallery=article.title)
+                        img.card-img-top(src='/uploads/posts/'+article.poster, alt=article.title)
+            .list-group.mb-4.sidebar-list.border-top.border-primary
+                .card.card-default
+                    .list-group-item.post-date
+                        .mb-0(data-toggle="tooltip" data-placement="top" title=article.date.year + ' ' + __('news.year') )
+                            i.far.fa-calendar-alt.mr-2
+                            = article.date.day + ' ' + article.date.month + ' ' + article.date.clock
+            .category-list
+                .list-group.mb-4
+                    .card.card-default
+                        each category, i in categories
+                            a.list-group-item.list-group-item-action(href='/articles/category/' + category.slug)
+                                i(class=category.icon)
+                                = ' ' +  category.name
+
+            .list-group.mb-4.sidebar-list.border-bottom.border-primary
+                .card.card-default
+                    .list-group-item
+                        .fb-share-button(data-href='/articles/' + article.slug + '/', data-layout='button', data-size='small', data-mobile-iframe='true')
+                            a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=/articles/' + article.slug + '&src=sdkpreparse')=__('news.share') 
         .col-md-9
             .card.card-default
                 .card-header
+                    a.mr-2(href="#", onclick='goBack()', data-toggle='tooltip', data-placement='top', title=__('news.go_back'))
+                        i.fas.fa-angle-left
                     = article.title.substr(0, 70)
                     .float-right
-                        .mb-0(style='color:#222;font-size:12px;' data-toggle="tooltip" data-placement="top" title=article.date.year + " წელი")
-                            = article.date.day + ' ' + article.date.month + ' ' + article.date.clock
+                        .fb-save(data-uri='http://emigrantisxma.com/articles/' + article.slug + '/', data-size='small')
                 .card-body
                     != article.body
                 .card-footer
-                    strong ავტორი: 
+                    strong=__('news.author') + ' '
                         small= author
                     if user
                         if user.isAdmin
@@ -44,3 +67,7 @@ block scripts
         event.preventDefault();
         $(this).ekkoLightbox();
         });
+    script.
+        function goBack() {
+            window.history.back();
+        }

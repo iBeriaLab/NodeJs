@@ -1,0 +1,62 @@
+extends ../layout/layout
+
+block content
+    .row
+        .col-md-3
+            include ../includes/profilesidebar
+        .col-md-9
+            .card.card-default
+                .card-header
+                    | გვერდები
+                    if user
+                        if user.isAdmin
+                            a.btn.btn-sm.btn-success.float-right(href='/users/add') მომხმარებლის დამატება
+                .card-body.no-padder
+                table.table.table-striped.mb-0
+                    thead
+                    tr
+                        th(scope='col') სტატუსი
+                        th(scope='col') ფოტო
+                        th(scope='col') სრული სახელი
+                        th(scope='col') ელ.ფოსტა
+                        th(scope='col')
+                    tbody#loop
+                        each member, i in members
+                            tr.user-card
+                                th(scope='row', style='width:10px;vertical-align: inherit;padding-top: 0;vertical-align: inherit;')
+                                    if !member.isVerify
+                                        span.badge.badge-secondary.float-right(style='position:absolute;font-size:6px;opacity:.3;' data-toggle="tooltip" data-placement="right" title="დაუდასტურებელი")
+                                                i.fas.fa-minus
+                                    else
+                                        span.badge.badge-info.float-right(style='position:absolute;font-size:6px;' data-toggle="tooltip" data-placement="right" title="დადასტურებული")
+                                                i.fas.fa-check
+                                td
+                                    if member.isAdmin
+                                        span.badge.badge-primary(style='position:absolute') A
+                                    img(src=member.avatar, alt="" style='width:32px;height:32px;border-radius: 0.2rem;')
+                                td(style='vertical-align: inherit;')
+                                    a(href="/users/p/" + member.username)
+                                        strong.mb-0!= member.firstName + ' ' + member.lastName
+                                td(style='vertical-align: inherit;')
+                                    != member.email
+                                td
+                                    if user
+                                        if user.isAdmin
+                                        .btn-group.float-right(role='group')
+                                            a.btn.btn-secondary.btn-sm(href='/pages/edit/')
+                                                i.far.fa-edit
+                                            a.btn.btn-danger.btn-sm.delete-page(href='#', data-id='')
+                                                i.far.fa-trash-alt
+                .card-footer
+                    nav(aria-label='Page navigation example')
+                        ul.user-pagination.mb-0(style='list-style: none;display: flex;padding-left: 0;')
+                            li.page-item#prev-page
+                                a.page-link(href='#', aria-label='Previous')
+                                    span(aria-hidden='true') «
+                                    span.sr-only Previous
+        block scripts
+            script(src='/js/paginate-users.js')
+            script.
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })

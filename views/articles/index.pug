@@ -6,14 +6,24 @@ block content
     .row
         .col-md-12
             .card
-                .card-header სიახლეები 
+                .card-header=__('news.title') 
                     .badge.badge-secondary= count
                     if user
                         if user.isAdmin
-                            a.btn.btn-sm.btn-primary.float-right(href='/articles/add') სიახლის დამატება 
-                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/articles/categories/add') კატეგორიის დამატება
+                            a.btn.btn-sm.btn-primary.float-right.mb-1(href='/articles/add')=__('news.add.news') 
+                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/articles/categories/add')=__('news.add.category') 
                 .card-body.no-padder
-            .row#loop(style="margin-top:20px;")                
+            .row
+                .col-md-12
+                    nav(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item.active(aria-current='page')
+                                a(href='/articles/')=__('news.all') 
+                            each category, i in categories
+                                li.breadcrumb-item(aria-current='page')
+                                    a(href='/articles/category/' + category.slug )= category.name
+                                //- li.breadcrumb-item.active(aria-current='page')  Library
+            .row#loop              
                     each article, i in articles
                         .col-md-3
                             .card.mb-4.post-card(style='width: 100%;')
@@ -26,7 +36,7 @@ block content
                                     .post-body.p-2#post-body!= article.body.substr(0, 275)
                                     .card-bottom
                                         a.btn.btn-primary.post-btn(href="/articles/"+article.slug)
-                                            small სრულად
+                                            small=__('news.more') 
             .row
                 .col-md-12
                     nav(aria-label='Page navigation example')

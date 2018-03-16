@@ -9,7 +9,7 @@ block content
                 if user.isAdmin
                     .row.mb-4
                         .col-md-4
-                            .card.card-default
+                            .card.card-default.mb-4
                                 .card-header
                                     i.fas.fa-newspaper.text-info(style="font-size:22px;")
                                     a.btn.btn-sm.btn-info.float-right.mr-1(href='#') სრულად
@@ -20,7 +20,7 @@ block content
                                     small
                                         strong სულ სტატია:
                         .col-md-4
-                            .card.card-default
+                            .card.card-default.mb-4
                                 .card-header
                                     i.fas.fa-money-bill-alt.text-warning(style="font-size:22px;")
                                     a.btn.btn-sm.btn-warning.text-white.float-right.mr-1(href='#') სრულად
@@ -31,7 +31,7 @@ block content
                                     small
                                         strong სულ გადარიცხვა:
                         .col-md-4
-                            .card.card-default
+                            .card.card-default.mb-4
                                 .card-header
                                     i.fas.fa-user-plus.text-success(style="font-size:22px;")
                                     a.btn.btn-sm.btn-success.float-right.mr-1(href='#') სრულად
@@ -41,14 +41,83 @@ block content
                                 .card-footer
                                     small
                                         strong სულ წევრი:
+                                        
             .card.card-default
-                .card-header
-                    = user.firstName + ' ' + user.lastName
-                .card-body
-                    p= user.birthday
+                .card-body.no-padder
+                    .tabbable
+                        ul.nav.nav-tabs
+                            li.nav-item.active
+                                a.nav-link(href='#home', data-toggle='tab') მთავარი
+                            li.nav-item
+                                a.nav-link(href='#settings', data-toggle='tab') პარამეტრები
+                        .tab-content
+                            #home.tab-pane.active
+                                 table.table.table-striped
+                                    thead
+                                        tr
+                                        th(scope='col') #
+                                        th(scope='col') First
+                                        th(scope='col') Last
+                                        th(scope='col') Handle
+                                    tbody
+                                        tr
+                                        th(scope='row') 1
+                                        td Mark
+                                        td Otto
+                                        td @mdo
+                                        tr
+                                        th(scope='row') 2
+                                        td Jacob
+                                        td Thornton
+                                        td @fat
+                                        tr
+                                        th(scope='row') 3
+                                        td Larry
+                                        td the Bird
+                                        td @twitter
+                            #settings.tab-pane.p-4
+                                form(style='width:100%;')
+                                    .row
+                                        .col-md-6
+                                            .form-group
+                                                input.form-control(type='text', placeholder='სახელი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='გვარი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='მამის სახელი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='დაბადების თარიღი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='დაბადების ადგილი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='ეროვნება')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='ტელეფონის ნომერი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='პირადი ნომერი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='პირადობის ნომერი')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='საცხოვრებელი მისამართი')
+                                        .col-md-6
+                                            .form-group
+                                                input.form-control(type='text', placeholder='First name')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='Last name')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='First name')
+                                            .form-group
+                                                input.form-control(type='text', placeholder='Last name')
+                    
+                        
+
                 .card-footer
                     p.m
 block scripts
+    script.
+        $(function () {
+        $('#myTab li:first-child a').tab('show')
+        })
     script.
         $(function() {
             var ctx = document.getElementById('profilepostChart').getContext('2d');

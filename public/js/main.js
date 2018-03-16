@@ -37,6 +37,27 @@ $(document).ready(function(){
 });
 
 
+
+//Nav DELETE
+$(document).ready(function(){
+    $('.delete-nav').on('click', function(e){
+        $target = $(e.target);
+        const id = $target.attr('data-id');
+        $.ajax({
+            type:'DELETE',
+            url:'/navs/' + id,
+            success: function(response){
+                alert('Deleting Page');
+                window.location.href='/navs';
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
+});
+
+
 $('#carouselExample').on('slide.bs.carousel', function (e) {
 
 
@@ -114,3 +135,15 @@ $('#carouselExample').on('slide.bs.carousel', function (e) {
     $("#imgInp").change(function(){
         readURL(this);
     });
+
+
+    // Javascript to enable link to tab
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+    } 
+
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
+    })

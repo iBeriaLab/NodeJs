@@ -1,0 +1,47 @@
+extends ../../layout/layout
+block content
+    .row
+        div(class='col-md-6')
+        div(class='col-md-6')
+    .row
+        .col-md-12
+            .card
+                .card-header= category[0].name
+                    .badge.badge-secondary= count
+                    if user
+                        if user.isAdmin
+                            a.btn.btn-sm.btn-primary.float-right(href='/articles/add') სიახლის დამატება 
+                            a.btn.btn-sm.btn-info.float-right.mr-1(href='/articles/categories/add') კატეგორიის დამატება
+                .card-body.no-padder
+            .row
+                .col-md-12
+                    nav(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item.active(aria-current='page')
+                                a(href='/articles/') ყველა
+                            each category, i in categories
+                                li.breadcrumb-item.active(aria-current='page')
+                                    a(href='/articles/category/' + category.slug )= category.name
+                                //- li.breadcrumb-item.active(aria-current='page')  Library
+            .row#loop(style="margin-top:20px;")                
+                   each article, i in articles
+                        .col-md-3
+                            .card.mb-4.post-card(style='width: 100%;')
+                                .post-img
+                                    small.float-right= article.category
+                                    img.card-img-top(src='/uploads/posts/'+article.poster, alt='Card image cap')
+                                .card-body.no-padder
+                                    h5.card-title.p-2.m-0= article.title.substr(0, 25)
+                                        #res
+                                    .post-body.p-2#post-body!= article.body.substr(0, 275)
+                                    .card-bottom
+                                        a.btn.btn-primary.post-btn(href="/articles/"+article.slug)
+                                            small სრულად
+            .row
+                .col-md-12
+                    nav(aria-label='Page navigation example')
+                        ul.pagination
+                            li.page-item#prev-page
+                                a.page-link(href='#', aria-label='Previous')
+                                    span(aria-hidden='true') «
+                                    span.sr-only Previous

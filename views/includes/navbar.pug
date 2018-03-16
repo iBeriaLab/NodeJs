@@ -8,22 +8,21 @@ nav.navbar.navbar-expand-lg.fixed-top.navbar-laravel
         #navbar.collapse.navbar-collapse
             ul.navbar-nav.mr-auto
                 li.nav-item.active
-                    a.nav-link(href='/') მთავარი
+                    a.nav-link(href='/')= __('nav.home')
                 li.nav-item
-                    a.nav-link(href='/articles') ბლოგი
+                    a.nav-link(href='/articles')= __('nav.blog')
                 li.nav-item
-                    a.nav-link(href='/photos/gallery') გალერეა
+                    a.nav-link(href='/photos/gallery')= __('nav.gallery')
                 li.nav-item.dropdown
-                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | ორგანიზაცია
+                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= __('nav.organisation')
                     .dropdown-menu(aria-labelledby='navbarDropdown')
-                        a.dropdown-item(href='#') ჩვენ შესახებ
-                        a.dropdown-item(href='#') ღონისძიებები
-                        a.dropdown-item(href='#') პროექტები
+                        a.dropdown-item(href='/pages/ჩვენ-შესახებ')= __('nav.aboutus')
+                        a.dropdown-item(href='#')= __('nav.events')
+                        a.dropdown-item(href='#')= __('nav.projects')
                         .dropdown-divider
-                        a.dropdown-item(href='/donation') შემოწირულობა
+                        a.dropdown-item(href='/donation')= __('nav.donation')
                 li.nav-item
-                    a.nav-link(href='#') კონტაქტი
+                    a.nav-link(href='/contact')= __('nav.contact')
             ul.nav.navbar-nav
                 if user
                     if user.isAdmin
@@ -38,12 +37,30 @@ nav.navbar.navbar-expand-lg.fixed-top.navbar-laravel
                             = user.firstName + ' ' + user.lastName
                             span.caret
                         .dropdown-menu
-                            a.dropdown-item(href='/users/'+user.username) პირადი გვერდი
-                            a.dropdown-item(href='/settings') პარამეტრები
+                            a.dropdown-item(href='/users/'+user.username)= __('nav.profile')
+                            a.dropdown-item(href='/users/'+user.username + '#settings')= __('nav.settings')
                             .dropdown-divider
-                            a.dropdown-item(href='/users/logout') გასვლა
+                            a.dropdown-item(href='/users/logout')= __('nav.logout')
+                    li.nav-item
+                        a.nav-link(href='/ka')
+                            img(src='/img/lang/'+ __('lang.georgian') + '.png', alt="")
+                    li.nav-item
+                        a.nav-link(href='/ru')
+                            img(src='/img/lang/'+ __('lang.russian') + '.png', alt="")
+                    li.nav-item
+                        a.nav-link(href='/en')
+                            img(src='/img/lang/'+ __('lang.english') + '.png', alt="")
                 else
                     li.nav-item
-                        a.nav-link(href='/users/login') ავტორიზაცია
+                        a.nav-link(href='/users/login')= __('nav.signin')
                     li.nav-item
-                        a.nav-link(href='/users/register') რეგისტრაცია
+                        a.nav-link(href='/users/register')= __('nav.signup')
+                    li.nav-item
+                        a.nav-link(href='/ka')
+                            img(src='/img/lang/'+ __('lang.georgian') + '.png', alt="")
+                    li.nav-item
+                        a.nav-link(href='/ru')
+                            img(src='/img/lang/'+ __('lang.russian') + '.png', alt="")
+                    li.nav-item
+                        a.nav-link(href='/en')
+                            img(src='/img/lang/'+ __('lang.english') + '.png', alt="")

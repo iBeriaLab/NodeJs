@@ -41,6 +41,9 @@ const articleSchema = mongoose.Schema({
         },
         clock:{
             type: String
+        },
+        created:{
+            type: Date
         }
     },
     gallery:{

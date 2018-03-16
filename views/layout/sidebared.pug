@@ -37,7 +37,6 @@ html
                             div(class="alert alert-danger") #{error.msg}
                     block content
             footer
-                block scripts
                 p &copy; 2018
         script(src='/bower_components/jquery/dist/jquery.min.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
@@ -46,3 +45,4 @@ html
         script(src='/js/jquery-te-1.4.0.js')
         script(src='/js/main.js')
         script(src='/js/pagination.js')
+        block scripts

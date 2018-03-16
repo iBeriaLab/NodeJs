@@ -1,5 +1,12 @@
-.card
-  .card-header= user.firstName + ' ' + user.lastName
+.card.mb-4
+  .card-header
+    != user.firstName + ' ' + user.lastName
+    if !user.isVerify
+        span.badge.badge-secondary.float-right(style='position:absolute;font-size:8px;opacity:.3;vertical-align: inherit;margin-left:10px;margin-top:5px;' data-toggle="tooltip" data-placement="right" title="დაუდასტურებელი")
+                i.fas.fa-minus
+    else
+        span.badge.badge-info.float-right(style='position:absolute;font-size:8px;vertical-align: inherit;margin-left:10px;margin-top:5px;' data-toggle="tooltip" data-placement="right" title="დადასტურებული")
+                i.fas.fa-check
   .card-body.no-padder
     img(src=user.avatar, alt=user.firstName + ' ' + user.lastName)
     .list-group
@@ -20,3 +27,6 @@
         a.list-group-item.list-group-item-action(href='/pages')
           i.fas.fa-file-alt
           |   გვერდები
+        a.list-group-item.list-group-item-action(href='/navs')
+          i.fas.fa-bars
+          |   ნავიგაცია

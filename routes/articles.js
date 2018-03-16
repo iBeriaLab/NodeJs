@@ -49,18 +49,21 @@ const Gallery = require('../models/gallery');
 
 //home route
 router.get('/', function(req, res){
-    Article.find({}, function(err, articles){
-        if(err){
-            console.log(err);
-        } else{
-            Article.count(function(err, c) {
-                res.render('articles/index', {
-                    title: 'სიახლეები',
-                    articles: articles,
-                    count:c
-                });
-           });
-        }
+    Article.find({}).sort('-created').exec(function(err, articles){
+        Category.find({}, function(err, categories){
+            if(err){
+                console.log(err);
+            } else{
+                Article.count(function(err, c) {
+                    res.render('articles/index', {
+                        title: 'სიახლეები',
+                        articles: articles,
+                        categories: categories,
+                        count:c
+                    });
+               });
+            }
+        });
     });
 });
 
@@ -143,7 +146,8 @@ router.post('/add', multer(multerConf).single('poster'), function(req, res, next
             month: month[dateString.getMonth()],
             weekday: weekday[dateString.getDay()],
             day: dateString.getDate(),
-            clock: dateString.getHours() + ':' + dateString.getMinutes() + ':' + dateString.getSeconds()
+            clock: dateString.getHours() + ':' + dateString.getMinutes() + ':' + dateString.getSeconds(),
+            created: new Date()
         };
 
         article.save(function(err){
@@ -163,11 +167,14 @@ router.get('/:slug', function(req, res, next){
     Article.find({"slug" : req.params.slug}, function(err, article){
         //console.log(article[0].title);
         User.findById(article[0].author, function(err, user){
-            Gallery.findById(article[0].gallery, function(err, gallery){
-                res.render('articles/article', {
-                    article: article[0],
-                    author: user.firstName + ' ' + user.lastName,
-                    gallery:gallery
+            Category.find({}, function(err, categories){
+                Gallery.findById(article[0].gallery, function(err, gallery){
+                    res.render('articles/article', {
+                        article: article[0],
+                        author: user.firstName + ' ' + user.lastName,
+                        gallery:gallery,
+                        categories:categories
+                    });
                 });
             });
         });
@@ -322,6 +329,7 @@ router.post('/categories/add', multer(multerConf).single('poster'), function(req
     }else{
         const category = new Category();
         category.name = req.body.name;
+        category.name = ars(req.body.name);
         category.icon = req.body.icon;
         category.parent = req.body.parent;
         category.date = dateString;
@@ -338,14 +346,23 @@ router.post('/categories/add', multer(multerConf).single('poster'), function(req
 });
 
 // Get Single article Categories 
-router.get('/categories/:id', function(req, res, next){
-    // Article.findById(req.params.id, function(err, category){
-    //     User.findById(category.author, function(err, user){
-    //         res.render('articles/categories/category', {
-    //             category: category
-    //         });
-    //     });
-    // });
+router.get('/category/:slug', function(req, res, next){
+    //let slug =  {"slug" : "article-test-title"}
+
+    Category.find({"slug" : req.params.slug}, function(err, category){
+        //console.log(category[0].slug);
+        Article.find({"category": category[0].slug}, function(err, articles){
+            Category.find({}, function(err, categories){
+                res.render('articles/categories/category', {
+                    category:category,
+                    articles: articles,
+                    categories:categories
+                });
+            });
+            //console.log(articles);
+        });
+    });
+
 });
 
 // Load edit form article Categories

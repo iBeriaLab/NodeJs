@@ -1,0 +1,62 @@
+extends ../layout/layout
+
+block content
+    .card.card-default
+        .card-header
+            | კონტაქტი
+        .card-body.no-padder
+    .contact-map
+        #map
+        .contact-card
+            .card.card-default
+                .card-body
+                    .list.mb-5.ml-0
+                        ul
+                            li.list-item.mb-2
+                                strong მისამართი: 
+                                p მოსკოვი ქუჩა 12
+                            li.list-item.mb-2
+                                strong ტელეფონი: 
+                                p +7154658458
+                            li.list-item.mb-2
+                                strong ელ.ფოსტა: 
+                                p diaspora@gmail.com
+                    
+
+                    .form-group
+                        input.form-control(type="text", placeholder="სრული სახელი")
+                    .form-group
+                        input.form-control(type="text", placeholder="საკონტაქტო ელ.ფოსტა")
+                    .form-group
+                        textarea.form-control(rows='10')
+block scripts
+    script.
+        function initMap(){
+            var options = {
+                zoom:12,
+                center:{lat:55.751244,lng:37.618423 - 0.1},
+                fullscreenControl: false,
+                mapTypeControl: false,
+                zoomControl: false,
+                scrollwheel: false,
+                draggable: true,
+                streetViewControl: false
+            }
+            //New Map
+            var map = new google.maps.Map(document.getElementById('map'), options);
+            //add marker
+            var marker = new google.maps.Marker({
+                position:{lat:55.751244,lng:37.618423},
+                map:map,
+                icon: '/img/marker.png'
+            });
+
+            var infoWindow = new google.maps.InfoWindow({
+                content:'ოფისი'
+            });
+
+            marker.addListener('click', function(){
+                infoWindow.open(map, marker);
+            });
+        }
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCmgR1PZWBhlYxL8cmrGAveZygIkOlwfc0&callback=initMap')

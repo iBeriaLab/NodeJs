@@ -1,0 +1,58 @@
+{
+    "site.title": "ქართული დიასპორა",
+    
+	"nav.home": "მთავარი",
+	"nav.blog": "ბლოგი",
+	"nav.gallery": "გალერეა",
+	"nav.organisation": "ორგანიზაცია",
+	"nav.aboutus": "ჩვენ შესახებ",
+	"nav.events": "ღონისძიებები",
+	"nav.projects": "პროექტები",
+	"nav.donation": "შემოწირულობა",
+	"nav.contact": "კონტაქტი",
+	"nav.profile": "პირადი გვერდი",
+	"nav.settings": "პარამეტრები",
+	"nav.logout": "გასვლა",
+	"nav.signin": "ავტორიზაცია",
+    "nav.signup": "რეგისტრაცია",
+
+    
+	"lang.georgian":"ქართული",
+	"lang.russian":"Русский",
+    "lang.english":"English",
+    
+    "login.signin":"ავტორიზაცია",
+    "login.username":"ზედმეტსახელი:",
+    "login.password":"პაროლი:",
+    "login.fb":"ავტორიზაცია Facebook-ით",
+
+    "reg.signup":"რეგისტრაცია",
+    "reg.firstName":"სახელი:",
+    "reg.lastName":"გვარი:",
+    "reg.email":"ელ.ფოსტა:",
+    "reg.username":"ზედმეტსახელი:",
+    "reg.password":"პაროლი:",
+    "reg.confirm":"პაროლის დადასტურება:",
+
+    "news.title":"სიახლეები",
+	"news.more":"სრულად",
+	"news.add.category":"კატეგორიის დამატება",
+	"news.add.news":"სიახლის დამატება",
+	"news.all":"ყველა",
+	"news.author":"ავტორი:",
+	"news.share":"გაზიარება",
+	"news.year":"წელი",
+	"news.go_back":"უკან დაბრუნება",
+    
+    "photo.albums":"ფოტო ალბომები",
+	"photo.album.more":"სრულად",
+    "photo.album.add":"ალბომის დამატება",
+    
+    "amount.insert.desired":"გთხოვთ შეიყვანოთ სასურველი თანხა",
+    "amount.next.step":"შემდეგი ნაბიჯი",
+    "amount.money.transfer":"თანხის გადარიცხვა",
+    "amount.money.indicated":"მითითებული თანხა",
+    "amount.money.transfer.completed":"თანხის გადარიცხვა დასრულებულია",
+	"amount.money.transfer.success.completed":"თანხის გადარიცხვა წარმატებით დასრულდა",
+	"amount.return.home":"მთავარ გვერდზე დაბრუნება"
+}

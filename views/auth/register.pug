@@ -2,32 +2,32 @@ extends ../layout/layout
 block content
     .card.card-default
         .card-header
-            h4.mb-0 #{title}
+            h4.mb-0=__('reg.signup')
         .card-body
             form(method='POST',  action="/users/register")
                 .row
                     .col-md-6
                         .form-group
-                            label სახელი:
+                            label=__('reg.firstName')
                             input.form-control(name="firstName", type="text")
                         .form-group
-                            label გვარი:
+                            label=__('reg.lastName')
                             input.form-control(name="lastName", type="text")
                         .form-group
-                            label ელ.ფოსტა:
+                            label=__('reg.email')
                             input.form-control(name="email", type="email")
                     .col-md-6
                         .form-group
-                            label ზედმეტსახელი:
+                            label=__('reg.username')
                             input.form-control(name="username", type="text")
                         .form-group
-                            label პაროლი:
+                            label=__('reg.password')
                             input.form-control(name="password", type="password")
                         .form-group
-                            label პაროლის დადასტურება:
+                            label=__('reg.confirm')
                             input.form-control(name="password2", type="password")
                 .row
                     .col-md-12
                         .form-group
-                            input.btn.btn-primary(type="submit", value="რეგისტრაცია")
+                            input.btn.btn-primary(type="submit", value=__('reg.signup'))
         .card-footer

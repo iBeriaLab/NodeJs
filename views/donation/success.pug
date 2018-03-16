@@ -2,11 +2,18 @@ extends ../layout/layout
 
 block content
     .card.card-default
-        .card-header 
+        .card-header=__('amount.money.transfer.completed')
         .card-body
             .row
                 .col-md-6.money-select
-                    p success
+                    .text-center
+                        h4=__('amount.money.transfer.success.completed')
+                    .text-center
+                        a.btn.btn-success.mt-4(href="/") 
+                            strong.text-white=__('amount.return.home')
                 .col-md-6
-                    p text2
+                    .transfer-img
+                        img(src="/img/rich.svg", alt="")
+                    p   თემთა ანგარების ვფიქრობდი ართობდა, არჩეული მიადგებიან ჯავრით კარებისკენ. გაფაციცებული ღელვით მოსასხამები აიღო დუნკანივით ვფიქრობდი ერისთავმა გაუყრელნი განცდითაც, პრორექტორიც, უკვირსო მიგნება, ჩამედინა წინასწარმეტყველნი. ანდაზის წამოდექი კარებისკენ ქეთინოზე წინასწარმეტყველნი გაუყრელნი. ართობდა სიარულის თემთა მოსწავლის ირჩევ ვიგდებ უდარბაზო. სიოთი ვიგდებ ლონდა თაროებზე ოპერიდან ართობდა წინასწარმეტყველნი კარებისკენ დამბრუნებოდა ინტეგრაცია. ვძმაკაცობ მოატან სიოთი გატირებდე ართობდა, ღორთა, გრომოვისთვის ილამაზებდა დაკავშირებული. ვიგდებ სოფელსაო კამზოლები მნათობი სატანის ნაშთიც, ჩამოაღწევს გამოიწერა ჩამედინა.
+        
         .card-footer

@@ -6,10 +6,10 @@ block content
     .row
         .col-md-12
             .card
-                .card-header სიახლეები
+                .card-header=__('photo.albums')
                     if user
                         if user.isAdmin
-                            a.btn.btn-sm.btn-primary.float-right(href='/photos/gallery/add') ალბომის დამატება 
+                            a.btn.btn-sm.btn-primary.float-right(href='/photos/gallery/add')=__('photo.album.add')
                             //-a.btn.btn-sm.btn-info.float-right.mr-1(href='/photos/gallery/categories/add') კატეგორიის დამატება
                 .card-body.no-padder
             .row#loop(style="margin-top:20px;")                
@@ -25,7 +25,7 @@ block content
                                     .post-body.p-2#post-body!= gallery.description
                                     .card-bottom
                                         a.btn.btn-primary.post-btn(href="/photos/gallery/"+gallery._id)
-                                            small სრულად
+                                            small=__('photo.album.more')
             .row
                 .col-md-12
                     nav(aria-label='Page navigation example')

@@ -2,14 +2,19 @@ extends ../layout/layout
 
 block content
     .card.card-default
-        .card-header #{title}
+        .card-header=__('amount.money.transfer')
         .card-body
             .row
                 .col-md-6.money-select
-                    label(for='c2') მიუთითეთ სასურველი თანხა
+                    label(for='c2')=__('amount.money.indicated')
 
                     
                     form(action='/donation/callback', method='POST')
+                        .row
+                            h1= amount / 100
+                                | $
+                        .row
+                            h5= email
                         .input-group
                             input#custom-donation-amount.form-control.currency(type='hidden', name="amount", value=amount, min='0', step='0.1', data-number-to-fixed='2', data-number-stepfactor='100')
                             script.stripe-button(
@@ -40,9 +45,12 @@ block content
                             document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
                         .text-center
                             button#stripe-button.btn.btn-warning.mt-4(type="submit") 
-                                strong.text-white თანხის გადარიცხვა
+                                strong.text-white=__('amount.money.transfer')
 
                        
                 .col-md-6
-                    p text2
+                    .transfer-img
+                        img(src="/img/rich.svg", alt="")
+                    p   თემთა ანგარების ვფიქრობდი ართობდა, არჩეული მიადგებიან ჯავრით კარებისკენ. გაფაციცებული ღელვით მოსასხამები აიღო დუნკანივით ვფიქრობდი ერისთავმა გაუყრელნი განცდითაც, პრორექტორიც, უკვირსო მიგნება, ჩამედინა წინასწარმეტყველნი. ანდაზის წამოდექი კარებისკენ ქეთინოზე წინასწარმეტყველნი გაუყრელნი. ართობდა სიარულის თემთა მოსწავლის ირჩევ ვიგდებ უდარბაზო. სიოთი ვიგდებ ლონდა თაროებზე ოპერიდან ართობდა წინასწარმეტყველნი კარებისკენ დამბრუნებოდა ინტეგრაცია. ვძმაკაცობ მოატან სიოთი გატირებდე ართობდა, ღორთა, გრომოვისთვის ილამაზებდა დაკავშირებული. ვიგდებ სოფელსაო კამზოლები მნათობი სატანის ნაშთიც, ჩამოაღწევს გამოიწერა ჩამედინა.
+        
         .card-footer

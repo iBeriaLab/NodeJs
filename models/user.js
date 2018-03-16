@@ -30,6 +30,10 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         require: false
     },
+    isVerify:{
+        type: Boolean,
+        require: false
+    },
     avatar:{
         type: String,
         require: false
