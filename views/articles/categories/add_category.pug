@@ -20,7 +20,23 @@ block content
                         form(method='POST',  action="/articles/add")
                             .form-group
                                 label სათაური:
-                                input.form-control(name="name", type="text", onkeypress="return makeGeo(this,event);")
+                                ul#myTab.nav.nav-tabs(role='tablist')
+                                    li.nav-item
+                                        a#home-tab.nav-link.p-1.active(data-toggle='tab', href='#home', role='tab', aria-controls='home', aria-selected='true')
+                                            img(src="/img/lang/ქართული.png", alt="")
+                                    li.nav-item
+                                        a#profile-tab.nav-link.p-1(data-toggle='tab', href='#profile', role='tab', aria-controls='profile', aria-selected='false')
+                                            img(src="/img/lang/Русский.png", alt="")
+                                    li.nav-item
+                                        a#contact-tab.nav-link.p-1(data-toggle='tab', href='#contact', role='tab', aria-controls='contact', aria-selected='false')
+                                            img(src="/img/lang/English.png", alt="")
+                                #myTabContent.tab-content
+                                    #home.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='home-tab')
+                                        input.form-control(name="name", type="text", onkeypress="return makeGeo(this,event);" placeholder="სათაური")
+                                    #profile.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab')
+                                        input.form-control(name="nameru", type="text", placeholder="Заглавие")
+                                    #contact.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab')
+                                        input.form-control(name="nameen", type="text", placeholder="Title")
                             .form-group
                                 label იკონი:
                                 input.form-control(name="icon", type="text")
@@ -29,6 +45,7 @@ block content
                                 select.form-control(name="category", id="categorySelect")
                                     option(value="---") ---
                                         each category, i in categories
-                                            option(value=category.name)= category.name
+                                            each cat, i in category.name
+                                                option(value=category.id)= cat[lang]
                         input.btn.btn-primary(type="submit", value="კატეგორიის დამატება")
                     .card-footer

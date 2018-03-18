@@ -111,6 +111,7 @@ app.use(passport.session());
 app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     res.cookie('ka',{ maxAge: 900000, httpOnly: true });
+    lang = req.cookies.i18n;
     next();
 });
 
@@ -155,22 +156,23 @@ app.get('/', function(req, res){
                 galleries: galleries
             });
             res.setLocale('ka');
-            console.log(req.cookies.i18n)
+            console.log(req.cookies.i18n);
+            console.log(req.ip);
         }
     });
 });
 
 app.get('/ka', function (req, res) {
     res.cookie('i18n', 'ka');
-    res.redirect('/')
+    res.redirect(req.get('referer'));
 });
 
 app.get('/ru', function (req, res) {
     res.cookie('i18n', 'ru');
-    res.redirect('/')
+    res.redirect(req.get('referer'));
 });
 
 app.get('/en', function (req, res) {
     res.cookie('i18n', 'en');
-    res.redirect('/')
+    res.redirect(req.get('referer'));
 });

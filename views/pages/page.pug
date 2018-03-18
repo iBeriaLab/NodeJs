@@ -5,12 +5,12 @@ block content
         .card-header
             != page.title
         .card-body
-            p= page.body
-        .card-footer
-          if user
-              if user.isAdmin
+            each body, i in page.body
+                p= body[lang]
+            if user
+                if user.isAdmin
                 .btn-group.float-right(role='group')
-                  a.btn.btn-secondary.btn-sm(href='/pages/edit/'+page._id)
-                      i.far.fa-edit
-                  a.btn.btn-danger.btn-sm.delete-page(href='#', data-id=page._id)
-                      i.far.fa-trash-alt
+                    a.btn.btn-secondary.btn-sm(href='/pages/edit/'+page._id)
+                        i.far.fa-edit
+                    a.btn.btn-danger.btn-sm.delete-page(href='#', data-id=page._id)
+                        i.far.fa-trash-alt

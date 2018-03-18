@@ -16,8 +16,7 @@ const pageSchema = mongoose.Schema({
         required: true
     },
     body:{
-        type:String,
-        required: true
+        type:Array
     },
     date:{
         type:String

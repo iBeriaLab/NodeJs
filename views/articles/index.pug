@@ -21,19 +21,27 @@ block content
                                 a(href='/articles/')=__('news.all') 
                             each category, i in categories
                                 li.breadcrumb-item(aria-current='page')
-                                    a(href='/articles/category/' + category.slug )= category.name
+                                    a(href='/articles/category/' + category.slug)
+                                        each c, i in category.name
+                                            != c[lang]
                                 //- li.breadcrumb-item.active(aria-current='page')  Library
             .row#loop              
                     each article, i in articles
                         .col-md-3
                             .card.mb-4.post-card(style='width: 100%;')
                                 .post-img
-                                    small.float-right= article.category
+                                    each catName, i in category
+                                        small.float-right= catName[lang]
                                     img.card-img-top(src='/uploads/posts/'+article.poster, alt='Card image cap')
                                 .card-body.no-padder
-                                    h5.card-title.p-2.m-0= article.title.substr(0, 25)
+                                    each title, i in article.title
+                                        if !title[lang]
+                                            h5.card-title.p-2.m-0= title[ka]
+                                        else
+                                            h5.card-title.p-2.m-0= title[lang].substr(0, 22)
                                         #res
-                                    .post-body.p-2#post-body!= article.body.substr(0, 275)
+                                    each body, i in article.body
+                                        .post-body.p-2#post-body!= body[lang].substr(0, 275)
                                     .card-bottom
                                         a.btn.btn-primary.post-btn(href="/articles/"+article.slug)
                                             small=__('news.more') 

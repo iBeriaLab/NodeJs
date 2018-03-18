@@ -19,7 +19,8 @@ block content
                         each category, i in categories
                             a.list-group-item.list-group-item-action(href='/articles/category/' + category.slug)
                                 i(class=category.icon)
-                                = ' ' +  category.name
+                                each c, i in category.name
+                                    != ' ' + c[lang]
 
             .list-group.mb-4.sidebar-list.border-bottom.border-primary
                 .card.card-default
@@ -31,11 +32,13 @@ block content
                 .card-header
                     a.mr-2(href="#", onclick='goBack()', data-toggle='tooltip', data-placement='top', title=__('news.go_back'))
                         i.fas.fa-angle-left
-                    = article.title.substr(0, 70)
+                    each title, i in article.title
+                        = title[lang].substr(0, 70)
                     .float-right
                         .fb-save(data-uri='http://emigrantisxma.com/articles/' + article.slug + '/', data-size='small')
                 .card-body
-                    != article.body
+                    each body, i in article.body
+                        != body[lang]
                 .card-footer
                     strong=__('news.author') + ' '
                         small= author

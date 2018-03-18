@@ -51,18 +51,22 @@ const Gallery = require('../models/gallery');
 router.get('/', function(req, res){
     Article.find({}).sort('-created').exec(function(err, articles){
         Category.find({}, function(err, categories){
-            if(err){
-                console.log(err);
-            } else{
-                Article.count(function(err, c) {
-                    res.render('articles/index', {
-                        title: 'სიახლეები',
-                        articles: articles,
-                        categories: categories,
-                        count:c
-                    });
-               });
-            }
+            Category.findById(articles[0].category, function(err, category){
+                //console.log(category.name)
+                if(err){
+                    console.log(err);
+                } else{
+                    Article.count(function(err, c) {
+                        res.render('articles/index', {
+                            title: 'სიახლეები',
+                            articles: articles,
+                            category: category.name,
+                            categories: categories,
+                            count:c
+                        });
+                   });
+                }
+            });
         });
     });
 });
@@ -134,12 +138,13 @@ router.post('/add', multer(multerConf).single('poster'), function(req, res, next
         });
     }else{
         const article = new Article();
-        article.title = req.body.title;
+        article.title = {ka:req.body.title,ru:req.body.titleru,en:req.body.titleen};
         article.slug = ars(req.body.title);
         article.category = req.body.category;
         article.poster = req.file.filename;
         article.author = req.user._id;
-        article.body = req.body.body;
+        article.body = {ka:req.body.body,ru:req.body.bodyru,en:req.body.bodyen};
+
         article.gallery = req.body.gallery;
         article.date = {
             year: dateString.getFullYear(),
@@ -204,16 +209,19 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
         }
         Category.find({}, function(err, categories){
             Gallery.find({}, function(err, gallery){
-                if(err){
-                    console.log(err);
-                } else{
-                    res.render('articles/edit_article', {
-                        title: 'სიახლის დამატება',
-                        categories: categories,
-                        article: article,
-                        gallery:gallery
-                    });
-                }
+                Category.findById(article.category, function(err, category){
+                    if(err){
+                        console.log(err);
+                    } else{
+                        res.render('articles/edit_article', {
+                            title: 'სიახლის დამატება',
+                            categories: categories,
+                            article: article,
+                            category:category,
+                            gallery:gallery
+                        });
+                    }
+                });
             });
         });
         // res.render('articles/edit_article', {
@@ -226,12 +234,12 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
 // Update articles post request
 router.post('/edit/:id', multer(multerConf).single('poster'), function(req, res, next){
     const article = {};
-    article.title = req.body.title;
+    article.title = {ka:req.body.title,ru:req.body.titleru,en:req.body.titleen};
     article.slug = ars(req.body.title);
     article.category = req.body.category;
     //article.poster = req.file.filename;
     article.author = req.user._id;
-    article.body = req.body.body;
+    article.body = {ka:req.body.body,ru:req.body.bodyru,en:req.body.bodyen};
     article.gallery = req.body.gallery;
 
     const query = {_id:req.params.id};
@@ -311,7 +319,7 @@ router.get('/categories/add', ensureAuthenticated, function(req, res, next){
 
 // Add article Categories post request
 router.post('/categories/add', multer(multerConf).single('poster'), function(req, res, next){
-    req.checkBody('name','Title is required').notEmpty();
+    //req.checkBody('name','Title is required').notEmpty();
     //req.checkBody('author','Author is required').notEmpty();
     req.checkBody('icon','Body is required').notEmpty();
 
@@ -328,8 +336,8 @@ router.post('/categories/add', multer(multerConf).single('poster'), function(req
         });
     }else{
         const category = new Category();
-        category.name = req.body.name;
-        category.name = ars(req.body.name);
+        category.name = {ka:req.body.name,ru:req.body.nameru,en:req.body.nameen};
+        category.slug = ars(req.body.name);
         category.icon = req.body.icon;
         category.parent = req.body.parent;
         category.date = dateString;

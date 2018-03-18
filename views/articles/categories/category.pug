@@ -6,7 +6,9 @@ block content
     .row
         .col-md-12
             .card
-                .card-header= category[0].name
+                .card-header
+                    each c, i in category[0].name
+                        != c[lang]
                     .badge.badge-secondary= count
                     if user
                         if user.isAdmin
@@ -21,7 +23,9 @@ block content
                                 a(href='/articles/') ყველა
                             each category, i in categories
                                 li.breadcrumb-item.active(aria-current='page')
-                                    a(href='/articles/category/' + category.slug )= category.name
+                                    a(href='/articles/category/' + category.slug )
+                                        each c, i in category.name
+                                            != c[lang]
                                 //- li.breadcrumb-item.active(aria-current='page')  Library
             .row#loop(style="margin-top:20px;")                
                    each article, i in articles

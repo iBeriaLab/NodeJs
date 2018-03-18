@@ -3,10 +3,20 @@ const mongoose = require('mongoose');
 //article schema
 
 const categoriesSchema = mongoose.Schema({
-    name:{
-        type:String,
-        required: true
-    },
+    name:[{
+        ka:{
+            type:String,
+            required: true
+        },
+        ru:{
+            type:String,
+            required: false
+        },
+        en:{
+            type:String,
+            required: false
+        }
+    }],
     slug:{
         type:String
     },

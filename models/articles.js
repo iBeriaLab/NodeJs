@@ -3,10 +3,20 @@ const mongoose = require('mongoose');
 //article schema
 
 const articleSchema = mongoose.Schema({
-    title:{
-        type:String,
-        required: true
-    },
+    title:[{
+        ka:{
+            type:String,
+            required: true
+        },
+        ru:{
+            type:String,
+            required: false
+        },
+        en:{
+            type:String,
+            required: false
+        }
+    }],
     slug:{
         type:String
     },
@@ -22,10 +32,20 @@ const articleSchema = mongoose.Schema({
         type:String,
         required: true
     },
-    body:{
-        type:String,
-        required: true
-    },
+    body:[{
+        ka:{
+            type:String,
+            required: true
+        },
+        ru:{
+            type:String,
+            required: false
+        },
+        en:{
+            type:String,
+            required: false
+        }
+    }],
     date:{
         year:{
             type: String
